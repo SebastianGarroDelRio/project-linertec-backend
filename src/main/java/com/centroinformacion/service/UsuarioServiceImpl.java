@@ -1,0 +1,66 @@
+package com.centroinformacion.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.centroinformacion.entity.Opcion;
+import com.centroinformacion.entity.Rol;
+import com.centroinformacion.entity.Usuario;
+import com.centroinformacion.repository.UsuarioRepository;
+
+@Service
+public class UsuarioServiceImpl implements UsuarioService {
+
+	@Autowired
+	private UsuarioRepository repository;
+	
+	@Override
+	public Usuario login(Usuario bean) {
+		return repository.login(bean);
+	}
+
+	@Override
+	public List<Opcion> traerEnlacesDeUsuario(int idUsuario) {
+		return repository.traerEnlacesDeUsuario(idUsuario);
+	}
+
+	@Override
+	public List<Rol> traerRolesDeUsuario(int idUsuario) {
+		return repository.traerRolesDeUsuario(idUsuario);
+	}
+
+	@Override
+	public Usuario buscaPorLogin(String login) {
+		return repository.findByLogin(login);
+	}
+
+	//CRUD
+	@Override
+	public List<Usuario> listaTodos() {
+		return repository.findAll();
+	}
+
+	@Override
+	public List<Usuario> listaPorNombreUsuarioLike(String filtro) {
+		return repository.listaUsuarioNombreLike(filtro);
+	}
+
+	@Override
+	public Usuario insertaActualizaUsuario(Usuario obj) {
+		return repository.save(obj);
+	}
+
+	@Override
+	public void eliminaUsuarioPorId(int idUsuario) {
+		repository.deleteById(idUsuario);
+	}
+
+	@Override
+	public Optional<Usuario> listaUsuarioPorId(int idUsuario) {
+		return repository.findById(idUsuario);
+	}
+	
+}
