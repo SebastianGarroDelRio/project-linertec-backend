@@ -19,57 +19,68 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrapValidator.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+
 
 <title>Intranet</title>
-
-<%@ include file="/WEB-INF/web/header2.jsp"%>
+<!--<%@ include file="/WEB-INF/web/header2.jsp"%> -->
 </head>   
 <body>    
-
-
-<!-- esto esto el inicio de la aplicacion  -->
-
-        <div class="top-content">
-            <div class="inner-bg">
-                <div class="container">
-                	<c:if test="${requestScope.mensaje != null}">
-               		<div class="alert alert-danger fade in" id="success-alert">
-				        <a href="#" class="close" data-dismiss="alert">&times;</a>
-				        <strong>${requestScope.mensaje}</strong>
-				    </div>
-				    </c:if>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Ingreso al Sistema de Intranet</h3>
-                            		<p>Ingrese su Usuario y Contraseña:</p>
-                        		</div>
-                            </div>
-                            <div class="form-bottom">
-<!--                             este inicia llama al metodo logui controller -->
-			                    <form id="id_form"  action="login" method="post" class="login-form">
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Usuario</label>
-			                        	<input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="luis">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Contraseña</label>
-			                        	<input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="luis">
-			                        </div>
-			                        <button type="submit" class="btn btn-primary">Ingresar</button>
-			                    </form>
-		                    </div>
-                        </div>   
+    <main>
+        <c:if test="${requestScope.mensaje != null}">
+                           <div class="alert alert-danger fade in" id="success-alert">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>${requestScope.mensaje}</strong>
+                        </div>
+        </c:if>
+                <div class="contenedor__todo">
+                    <div class="caja__trasera">
+                        <div class="caja__trasera-login">
+                            <h1>¿Ya tienes una cuenta?</h1>
+                            <p>Inicia sesion para entrar en la pagina</p>
+                            <button id="btn__iniciar-sesion">Iniciar Sesion</button>
+                        </div>
+                        <div class="caja__trasera-register">
+                            <h1>¿No tienes una cuenta?</h1>
+                            <p>Registrate para que puedas iniciar sesion</p>
+                            <button id="btn__registrarse">Registrarse</button>
+                        </div>
                     </div>
-                    
+    
+                    <!--Formulario de Login y registro-->
+                    <div class="contenedor__login-register">
+                        <!--Login-->
+                           <form id="id_form"  action="login" method="post" class="formulario__login login-form">
+                           <h1>Iniciar Sesion</h1>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-username">Usuario</label>
+                                            <input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="luis">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-password">Contraseña</label>
+                                            <input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="luis">
+                                        </div>
+                                    <button type="submit" >Entrar</button>
+                            </form>
+    
+                        <!--Register-->
+                        <form action="" class="formulario__register">
+                            <h1>Registrarse</h1>
+                            <input type="text" placeholder="Nombre completo">
+                            <input type="text" placeholder="Correo Electronico">
+                            <input type="text" placeholder="Usuario">
+                            <input type="password" placeholder="Contraseña">
+                            <button>Registrarse</button>
+                        
+                        </form>
+                    </div>
                 </div>
-            </div>
-            
-        </div>
+    
+            </main>
 
+    <script src="js/script.js"></script>
 
-     
 <script type="text/javascript">
 $("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
     $("#success-alert").slideUp(500);
@@ -87,10 +98,10 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	dni: {
+        	login: {
                 validators: {
                     notEmpty: {
-                        message: 'El usuario es obligatorio'
+                        message: 'Ingresar su usuario'
                     },
                     stringLength :{
                     	message: 'El usuario es de 3 a 20 caracteres',
@@ -102,7 +113,7 @@ $(document).ready(function() {
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'La contraseña es obligatorio'
+                        message: 'Ingresar su constraseña'
                     },
                     stringLength :{
                     	message: 'La contraseña es de 3 a 20 caracteres',
@@ -120,5 +131,9 @@ $(document).ready(function() {
 });
 </script>
 
+
 </body>
 </html>
+
+
+
