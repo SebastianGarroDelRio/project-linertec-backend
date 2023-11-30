@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService service;
-	
+
 	@GetMapping("/consultaCrudCliente")
 	@ResponseBody
 	public List<Cliente> listaClientes(String filtro) {
@@ -41,6 +42,16 @@ public class ClienteController {
 		activo.setIdestado(1);
 		activo.setDescripcionestado("Activo");
 		obj.setEstado(activo);
+
+		// Validacion de Telefono
+		List<Cliente> lstCliente = service.listaClientePorTelefonoDiferenteSiMismo(obj.getTelefono(),
+				obj.getIdCliente());
+		if (!CollectionUtils.isEmpty(lstCliente)) {
+			map.put("mensaje", "El cliente con telefono " + obj.getTelefono() + " ya existe");
+			List<Cliente> lista = service.listaPorNombreClienteLike("%");
+			map.put("lista", lista);
+			return map;
+		}
 
 		Cliente objSalida = service.insertaActualizaCliente(obj);
 		if (objSalida == null) {
@@ -65,7 +76,17 @@ public class ClienteController {
 		activo.setIdestado(2);
 		activo.setDescripcionestado("");
 		obj.setEstado(activo);
-		
+
+		// Validacion de Telefono
+		List<Cliente> lstCliente = service.listaClientePorTelefonoDiferenteSiMismo(obj.getTelefono(),
+				obj.getIdCliente());
+		if (!CollectionUtils.isEmpty(lstCliente)) {
+			map.put("mensaje", "El cliente con telefono " + obj.getTelefono() + " ya existe");
+			List<Cliente> lista = service.listaPorNombreClienteLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
 		Cliente objSalida = service.insertaActualizaCliente(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error al actualizar");
@@ -85,7 +106,7 @@ public class ClienteController {
 		Cliente obj = service.listaClientePorId(id).get();
 
 		Estado activo = new Estado();
-		activo.setIdestado( obj.getEstado().getIdestado() == 2? 1:2);
+		activo.setIdestado(obj.getEstado().getIdestado() == 2 ? 1 : 2);
 		activo.setDescripcionestado("");
 		obj.setEstado(activo);
 		Cliente objSalida = service.insertaActualizaCliente(obj);

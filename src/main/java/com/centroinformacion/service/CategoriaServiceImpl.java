@@ -32,8 +32,9 @@ public class CategoriaServiceImpl implements CategoriaService{
 	}
 
 	@Override
-	public void eliminaCategoriaPorId(int idCategoria) {
+	public boolean eliminaCategoriaPorId(int idCategoria) {
 		repository.deleteById(idCategoria);
+		return true;
 	}
 
 	@Override

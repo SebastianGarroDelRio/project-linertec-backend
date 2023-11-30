@@ -11,7 +11,7 @@ import com.centroinformacion.entity.Rol;
 import com.centroinformacion.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-	
+
 	@Query("Select x from Usuario x where x.login = :#{#usu.login} and x.password = :#{#usu.password}")
 	public abstract Usuario login(@Param(value = "usu") Usuario bean);
 
@@ -22,9 +22,13 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	public abstract List<Rol> traerRolesDeUsuario(@Param("var_idUsuario") int idUsuario);
 
 	public abstract Usuario findByLogin(String login);
-	
-	//FILTRAR
+
+	// FILTRAR
 	@Query("select u from Usuario u where u.nombres like ?1 ")
 	public List<Usuario> listaUsuarioNombreLike(String filtro);
 
+	// VALIDACIONES
+	@Query("select u from Usuario u where u.dni = ?1 and u.idUsuario <> ?2")
+	public List<Usuario> listaPorDniDiferenteSiMismo(String dni, int idUsuario);
+	
 }

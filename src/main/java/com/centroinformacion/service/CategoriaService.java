@@ -17,7 +17,7 @@ public interface CategoriaService {
 	public abstract Categoria insertaActualizaCategoria(Categoria obj);
 
 	// ELIMINA
-	public abstract void eliminaCategoriaPorId(int idCategoria);
+	public abstract boolean eliminaCategoriaPorId(int idCategoria);
 
 	// LISTAR POR UN ID
 	public abstract Optional<Categoria> listaCategoriaPorId(int idCategoria);

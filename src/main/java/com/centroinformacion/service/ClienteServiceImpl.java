@@ -50,33 +50,6 @@ public class ClienteServiceImpl implements ClienteService {
 		return repository.listaPorTelefonoDiferenteSiMismo(telefono, idCliente);
 	}
 
-	@Override
-	public List<Cliente> listaClientePorCorreoDiferenteSiMismo(String correo, int idCliente) {
-		return repository.listaPorCorreoDiferenteSiMismo(correo, idCliente);
-	}
-
-	@Override
-	public List<Cliente> listaClientePorDireccionDiferenteSiMismo(String direccion, int idCliente) {
-		return repository.listaPorDireccionDiferenteSiMismo(direccion, idCliente);
-	}
-
-	// INICIO VALIDACION ACTUALIZA
-
-	@Override
-	public List<Cliente> listaClientePorTelefonoDiferenteSiMismoActualiza(String telefono, int idCliente) {
-		return repository.listaPorTelefonoDiferenteSiMismoActualiza(telefono, idCliente);
-	}
-
-	@Override
-	public List<Cliente> listaClientePorCorreoDiferenteSiMismoActualiza(String correo, int idCliente) {
-		return repository.listaPorCorreoDiferenteSiMismoActualiza(correo, idCliente);
-	}
-
-	@Override
-	public List<Cliente> listaClientePorDireccionDiferenteSiMismoActualiza(String direccion, int idCliente) {
-		return repository.listaPorDireccionDiferenteSiMismoActualiza(direccion, idCliente);
-	}
-
 	
 	//TRANSACCION
 	@Override

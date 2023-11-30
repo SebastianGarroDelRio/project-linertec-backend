@@ -8,7 +8,7 @@ import com.centroinformacion.entity.Rol;
 import com.centroinformacion.entity.Usuario;
 
 public interface UsuarioService {
-	
+
 	public abstract Usuario login(Usuario bean);
 
 	public abstract List<Opcion> traerEnlacesDeUsuario(int idUsuario);
@@ -17,10 +17,9 @@ public interface UsuarioService {
 
 	public abstract Usuario buscaPorLogin(String login);
 
-	
-	//LISTAR COMBO
+	// LISTAR COMBO
 	public abstract List<Usuario> listaTodos();
-	
+
 	// FILTRAR
 	public abstract List<Usuario> listaPorNombreUsuarioLike(String filtro);
 
@@ -32,4 +31,7 @@ public interface UsuarioService {
 
 	// LISTA POR UN ID
 	public abstract Optional<Usuario> listaUsuarioPorId(int idUsuario);
+
+	// VALIDACIONES
+	public abstract List<Usuario> listaUsuarioPorDniDiferenteSiMismo(String dni, int idUsuario);
 }

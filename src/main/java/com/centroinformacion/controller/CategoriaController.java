@@ -3,41 +3,44 @@ package com.centroinformacion.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.Categoria;
+import com.centroinformacion.entity.Estado;
 import com.centroinformacion.service.CategoriaService;
-import com.centroinformacion.util.AppSettings;
 
 import jakarta.servlet.http.HttpSession;
-
 
 @Controller
 public class CategoriaController {
 
 	@Autowired
 	private CategoriaService service;
- 
+
 	@GetMapping("/consultaCrudCategoria")
 	@ResponseBody
 	public List<Categoria> lista(String filtro) {
 		List<Categoria> listSalida = service.listaPorNombreCategoriaLike("%" + filtro + "%");
 		return listSalida;
 	}
-	
+
 	@PostMapping("/registraCrudCategoria")
 	@ResponseBody
 	public Map<?, ?> registra(Categoria obj, HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		obj.setEstado(AppSettings.ACTIVO);
-		
+
+		Estado activo = new Estado();
+		activo.setIdestado(1);
+		activo.setDescripcionestado("Activo");
+		obj.setEstado(activo);
+
 		Categoria objSalida = service.insertaActualizaCategoria(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
@@ -48,16 +51,17 @@ public class CategoriaController {
 		}
 		return map;
 	}
-	
+
 	@PostMapping("/actualizaCrudCategoria")
 	@ResponseBody
 	public Map<?, ?> actualiza(Categoria obj, HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		Optional<Categoria> optCategoria = service.listaCategoriaPorId(obj.getIdCategoria());
-		
-		obj.setEstado(optCategoria.get().getEstado());
-		
+
+		Estado activo = new Estado();
+		activo.setIdestado(2);
+		activo.setDescripcionestado("");
+		obj.setEstado(activo);
+
 		Categoria objSalida = service.insertaActualizaCategoria(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error al actualizar");
@@ -69,21 +73,17 @@ public class CategoriaController {
 		return map;
 	}
 
-	@PostMapping("/eliminaCrudCategoria")
+	@DeleteMapping("/eliminaCrudCategoria")
 	@ResponseBody
-	public Map<?, ?> elimina(int id) {
+	public Map<?, ?> elimina(@RequestParam int id) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
-		Categoria obj = service.listaCategoriaPorId(id).get();
-		
-		obj.setEstado(obj.getEstado() == 1 ? 0 : 1);
-
-		Categoria objSalida = service.insertaActualizaCategoria(obj);
-		if (objSalida == null) {
-			map.put("mensaje", "Error en actualizar");
-		} else {
+		boolean eliminacionExitosa = service.eliminaCategoriaPorId(id);
+		if (eliminacionExitosa) {
 			List<Categoria> lista = service.listaPorNombreCategoriaLike("%");
 			map.put("lista", lista);
+		} else {
+			map.put("mensaje", "Error al eliminar el registro");
 		}
 		return map;
 	}

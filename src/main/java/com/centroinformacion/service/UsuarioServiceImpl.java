@@ -62,5 +62,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Optional<Usuario> listaUsuarioPorId(int idUsuario) {
 		return repository.findById(idUsuario);
 	}
+
+	//VALIDACIONES
+	@Override
+	public List<Usuario> listaUsuarioPorDniDiferenteSiMismo(String dni, int idUsuario) {
+		return repository.listaPorDniDiferenteSiMismo(dni, idUsuario);
+	}
 	
 }

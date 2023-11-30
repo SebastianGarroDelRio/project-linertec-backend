@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService service;
-	
+
 	@GetMapping("/consultaCrudUsuario")
 	@ResponseBody
 	public List<Usuario> listaUsuarios(String filtro) {
@@ -36,6 +37,15 @@ public class UsuarioController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		obj.setFechaRegistro(new Date());
+
+		// Validacion de DNI
+		List<Usuario> lstSalida = service.listaUsuarioPorDniDiferenteSiMismo(obj.getDni(), obj.getIdUsuario());
+		if (!CollectionUtils.isEmpty(lstSalida)) {
+			map.put("mensaje", "El usuario con DNI " + obj.getDni() + " ya existe");
+			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
+			map.put("lista", lista);
+			return map;
+		}
 
 		Usuario objSalida = service.insertaActualizaUsuario(obj);
 		if (objSalida == null) {
@@ -56,7 +66,16 @@ public class UsuarioController {
 		Optional<Usuario> optUsuario = service.listaUsuarioPorId(obj.getIdUsuario());
 
 		obj.setFechaRegistro(optUsuario.get().getFechaRegistro());
-		
+
+		// Validacion de DNI
+		List<Usuario> lstSalida = service.listaUsuarioPorDniDiferenteSiMismo(obj.getDni(), obj.getIdUsuario());
+		if (!CollectionUtils.isEmpty(lstSalida)) {
+			map.put("mensaje", "El usuario con DNI " + obj.getDni() + " ya existe");
+			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
 		Usuario objSalida = service.insertaActualizaUsuario(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error al actualizar");

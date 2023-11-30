@@ -29,19 +29,6 @@ public interface ClienteService {
 
 	public abstract List<Cliente> listaClientePorTelefonoDiferenteSiMismo(String telefono, int idCliente);
 
-	public abstract List<Cliente> listaClientePorCorreoDiferenteSiMismo(String correo, int idCliente);
-
-	public abstract List<Cliente> listaClientePorDireccionDiferenteSiMismo(String direccion, int idCliente);
-
-	
-	
-	// VALIDACIONES ACTUALIZAR
-
-	public abstract List<Cliente> listaClientePorTelefonoDiferenteSiMismoActualiza(String telefono, int idCliente);
-
-	public abstract List<Cliente> listaClientePorCorreoDiferenteSiMismoActualiza(String correo, int idCliente);
-
-	public abstract List<Cliente> listaClientePorDireccionDiferenteSiMismoActualiza(String direccion, int idCliente);
 	
 
 	// TRANSACCION

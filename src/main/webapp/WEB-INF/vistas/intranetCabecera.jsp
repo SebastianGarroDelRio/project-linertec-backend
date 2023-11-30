@@ -19,7 +19,7 @@
     	<c:if test="${ !empty sessionScope.objMenusTipo1}">
 	    	<li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		           Dashboard<b class="caret"></b>
+		           Inventario<b class="caret"></b>
 		        </a>
 		        <ul class="dropdown-menu">
 		        	<c:forEach var="x" items="${sessionScope.objMenusTipo1}">
@@ -34,7 +34,7 @@
      	<c:if test="${ !empty sessionScope.objMenusTipo3}">
 	    	<li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		           Inventario<b class="caret"></b>
+		           Servicios<b class="caret"></b>
 		        </a>
 		        <ul class="dropdown-menu">
 		        	<c:forEach var="x" items="${sessionScope.objMenusTipo3}">
@@ -64,7 +64,7 @@
      	<c:if test="${ !empty sessionScope.objMenusTipo4}">
 	    	<li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		          Servicios<b class="caret"></b>
+		          Administracion<b class="caret"></b>
 		        </a>
 		        <ul class="dropdown-menu">
 		        	<c:forEach var="x" items="${sessionScope.objMenusTipo4}">
@@ -75,21 +75,6 @@
 		        </ul>
 	     	</li>
      	</c:if>
-     	
-     	<c:if test="${ !empty sessionScope.objMenusTipo5}">
-	    	<li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		         	Administración<b class="caret"></b>
-		        </a>
-		        <ul class="dropdown-menu">
-		        	<c:forEach var="x" items="${sessionScope.objMenusTipo5}">
-						<li>
-		        			<a href="${x.ruta}"> ${x.nombre} </a>
-		        		</li>
-		        	</c:forEach>
-		        </ul>
-	     	</li>
-     	</c:if> 
      	
      </ul>
       

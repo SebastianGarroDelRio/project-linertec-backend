@@ -38,10 +38,6 @@ public class EnlaceController {
 	
 	@GetMapping("/verIntranetHome")
 	public String verIntranetHome() {	return "intranetHome";  }
-
-	
-	@GetMapping("/verDashBoard")
-	public String verDashBoard() {	return "intranetDashBoard";	}
 	
 	@GetMapping("/verCrudCategoria")
 	public String verCrudCategoria() {	return "intranetCrudCategoria";	}
