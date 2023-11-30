@@ -68,5 +68,32 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public List<Usuario> listaUsuarioPorDniDiferenteSiMismo(String dni, int idUsuario) {
 		return repository.listaPorDniDiferenteSiMismo(dni, idUsuario);
 	}
+
+	@Override
+	public List<Usuario> listaUsuarioPorCorreoDiferenteSiMismo(String correo, int idUsuario) {
+		return repository.listaPorCorreoDiferenteSiMismo(correo, idUsuario);
+	}
+
+	@Override
+	public List<Usuario> listaUsuarioPorLoginDiferenteSiMismo(String login, int idUsuario) {
+		return repository.listaPorLoginDiferenteSiMismo(login, idUsuario);
+	}
+
+	@Override
+	public List<Usuario> listaUsuarioPorDniDiferenteSiMismoActualiza(String dni, int idUsuario) {
+		return repository.listaPorDniDiferenteSiMismoActualiza(dni, idUsuario);
+	}
+
+	@Override
+	public List<Usuario> listaUsuarioPorLoginDiferenteSiMismoActualiza(String login, int idUsuario) {
+		return repository.listaPorLoginDiferenteSiMismoActualiza(login, idUsuario);
+	}
+
+	@Override
+	public List<Usuario> listaUsuarioPorCorreoDiferenteSiMismoActualiza(String correo, int idUsuario) {
+		return repository.listaPorCorreoDiferenteSiMismoActualiza(correo, idUsuario);
+	}
+
+	
 	
 }

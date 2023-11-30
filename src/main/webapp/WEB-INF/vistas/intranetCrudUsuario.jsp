@@ -242,10 +242,18 @@
 															</div>
 														</div>
 														<div class="form-group">
-															<label class="col-lg-3 control-label" for="id_act_nombre">Usuario</label>
+															<label class="col-lg-3 control-label" for="id_act_nombre">Nombre</label>
 															<div class="col-lg-8">
 																<input class="form-control" id="id_act_nombre"
 																	name="nombres" placeholder="Ingrese el nombre"
+																	type="text" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-lg-3 control-label" for="id_act_apellido">Apellido</label>
+															<div class="col-lg-8">
+																<input class="form-control" id="id_act_apellido"
+																	name="apellidos" placeholder="Ingrese el nombre"
 																	type="text" />
 															</div>
 														</div>
@@ -389,6 +397,8 @@
 														+ '\',\''
 														+ row.nombres
 														+ '\',\''
+														+ row.apellidos
+														+ '\',\''
 														+ row.dni
 														+ '\',\''
 														+ row.login
@@ -458,7 +468,15 @@
 									selector : '#id_reg_nombre',
 									validators : {
 										notEmpty : {
-											message : 'El usuario es un campo obligatorio'
+											message : 'El nombre es un campo obligatorio'
+										},
+									}
+								},
+								"apellidos" : {
+									selector : '#id_reg_apellidos',
+									validators : {
+										notEmpty : {
+											message : 'El apellido es un campo obligatorio'
 										},
 									}
 								},
@@ -548,7 +566,15 @@
 									selector : '#id_act_nombre',
 									validators : {
 										notEmpty : {
-											message : 'El usuario es un campo obligatorio'
+											message : 'El nombre es un campo obligatorio'
+										},
+									}
+								},
+								"apellidos" : {
+									selector : '#id_act_apellido',
+									validators : {
+										notEmpty : {
+											message : 'El apellido es un campo obligatorio'
 										},
 									}
 								},
@@ -603,10 +629,11 @@
 							}
 						});
 
-		function editar(idUsuario, nombres, dni, login, password, correo,
+		function editar(idUsuario, nombres, apellidos, dni, login, password, correo,
 				direccion, fechaNacimiento) {
 			$('#id_ID').val(idUsuario);
-			$('#id_act_nombre').val(nombreCompleto);
+			$('#id_act_nombre').val(nombres);
+			$('#id_act_apellido').val(apellidos);
 			$('#id_act_dni').val(dni);
 			$('#id_act_login').val(login);
 			$('#id_act_password').val(password);
@@ -634,6 +661,7 @@
 
 		function limpiarFormulario() {
 			$('#id_reg_nombre').val('');
+			$('#id_reg_apellido').val('');
 			$('#id_reg_dni').val('');
 			$('#id_reg_login').val('');
 			$('#id_reg_password').val('');

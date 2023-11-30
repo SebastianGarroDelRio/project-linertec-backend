@@ -28,7 +28,23 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	public List<Usuario> listaUsuarioNombreLike(String filtro);
 
 	// VALIDACIONES
-	@Query("select u from Usuario u where u.dni = ?1 and u.idUsuario <> ?2")
+	@Query("select u from Usuario u where u.dni = ?1 and u.idUsuario <> ?2 ")
 	public List<Usuario> listaPorDniDiferenteSiMismo(String dni, int idUsuario);
-	
+
+	@Query("select u from Usuario u where u.login = ?1 and u.idUsuario <> ?2 ")
+	public List<Usuario> listaPorLoginDiferenteSiMismo(String login, int idUsuario);
+
+	@Query("select u from Usuario u where u.correo = ?1 and u.idUsuario <> ?2 ")
+	public List<Usuario> listaPorCorreoDiferenteSiMismo(String correo, int idUsuario);
+
+	// VALIDACIONES PARA ACTUALIZAR
+	@Query("select u from Usuario u where u.login = ?1 and u.idUsuario != ?2 ")
+	public List<Usuario> listaPorLoginDiferenteSiMismoActualiza(String login, int idUsuario);
+
+	@Query("select u from Usuario u where u.dni = ?1 and u.idUsuario != ?2 ")
+	public List<Usuario> listaPorDniDiferenteSiMismoActualiza(String dni, int idUsuario);
+
+	@Query("select u from Usuario u where u.correo = ?1 and u.idUsuario != ?2 ")
+	public List<Usuario> listaPorCorreoDiferenteSiMismoActualiza(String correo, int idUsuario);
+
 }

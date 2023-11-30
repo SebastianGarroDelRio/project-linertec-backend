@@ -47,6 +47,24 @@ public class UsuarioController {
 			return map;
 		}
 
+		// Validacion de login
+		List<Usuario> lstLogin = service.listaUsuarioPorLoginDiferenteSiMismo(obj.getLogin(), obj.getIdUsuario());
+		if (!CollectionUtils.isEmpty(lstLogin)) {
+			map.put("mensaje", "El usuario " + obj.getLogin() + " ya existe");
+			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
+		// Validacion de correo
+		List<Usuario> lstCorreo = service.listaUsuarioPorCorreoDiferenteSiMismo(obj.getCorreo(), obj.getIdUsuario());
+		if (!CollectionUtils.isEmpty(lstCorreo)) {
+			map.put("mensaje", "El usuario con correo " + obj.getCorreo() + " ya existe");
+			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
 		Usuario objSalida = service.insertaActualizaUsuario(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
@@ -68,9 +86,27 @@ public class UsuarioController {
 		obj.setFechaRegistro(optUsuario.get().getFechaRegistro());
 
 		// Validacion de DNI
-		List<Usuario> lstSalida = service.listaUsuarioPorDniDiferenteSiMismo(obj.getDni(), obj.getIdUsuario());
+		List<Usuario> lstSalida = service.listaUsuarioPorDniDiferenteSiMismoActualiza(obj.getDni(), obj.getIdUsuario());
 		if (!CollectionUtils.isEmpty(lstSalida)) {
 			map.put("mensaje", "El usuario con DNI " + obj.getDni() + " ya existe");
+			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
+		// Validacion de login
+		List<Usuario> lstLogin = service.listaUsuarioPorLoginDiferenteSiMismoActualiza(obj.getLogin(), obj.getIdUsuario());
+		if (!CollectionUtils.isEmpty(lstLogin)) {
+			map.put("mensaje", "El usuario " + obj.getLogin() + " ya existe");
+			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
+		// Validacion de correo
+		List<Usuario> lstCorreo = service.listaUsuarioPorCorreoDiferenteSiMismoActualiza(obj.getCorreo(), obj.getIdUsuario());
+		if (!CollectionUtils.isEmpty(lstCorreo)) {
+			map.put("mensaje", "El usuario con correo " + obj.getCorreo() + " ya existe");
 			List<Usuario> lista = service.listaPorNombreUsuarioLike("%");
 			map.put("lista", lista);
 			return map;

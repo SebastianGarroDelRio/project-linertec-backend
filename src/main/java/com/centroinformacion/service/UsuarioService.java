@@ -34,4 +34,12 @@ public interface UsuarioService {
 
 	// VALIDACIONES
 	public abstract List<Usuario> listaUsuarioPorDniDiferenteSiMismo(String dni, int idUsuario);
+	public abstract List<Usuario> listaUsuarioPorLoginDiferenteSiMismo(String login, int idUsuario);
+	public abstract List<Usuario> listaUsuarioPorCorreoDiferenteSiMismo(String correo, int idUsuario);
+	
+	
+	public abstract List<Usuario> listaUsuarioPorDniDiferenteSiMismoActualiza(String dni, int idUsuario);
+	public abstract List<Usuario> listaUsuarioPorLoginDiferenteSiMismoActualiza(String login, int idUsuario);
+	public abstract List<Usuario> listaUsuarioPorCorreoDiferenteSiMismoActualiza(String correo, int idUsuario);
+	
 }
