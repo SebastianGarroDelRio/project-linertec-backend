@@ -89,7 +89,7 @@
 							<ul class="sign">
 								<li><a href="#"><i class="fa fa-search"
 										aria-hidden="true"></i></a></li>
-								<li><a class="sign_btn" href="verLogin">Iniciar Sesion</a></li>
+								<li><a class="sign_btn" href="verLogin" target="_blank">Iniciar Sesion</a></li>
 								<!-- Reemplaza tu botón existente con este para abrir el modal -->
 							</ul>
 						</div>
