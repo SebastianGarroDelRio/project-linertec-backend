@@ -81,7 +81,37 @@ public class ProveedorServiceImpl implements ProveedorService{
 	public Optional<Proveedor> listaProveedorPorId(int idProveedor) {
 		return repository.findById(idProveedor);
 	}
-	
+
+	@Override
+	public List<Proveedor> listaPorCorreoDiferenteSiMismo(String correo) {
+		return repository.listaPorCorreoDiferenteSiMismo(correo);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorNombreIgual(String nombreProveedor) {
+		return repository.listaProveedorNombreIgual(nombreProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaPorTelefonoDiferenteSiMismo(String telefono) {
+        return repository.listaPorTelefonoDiferenteSiMismo(telefono);
+	}
+
+	@Override
+	public List<Proveedor> listaPorCorreoDiferenteSiMismoActualiza(String correo, int idProveedor) {
+		return repository.listaPorCorreoDiferenteSiMismoActualiza(correo, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorNombreIgualActualiza(String nombreProveedor, int idProveedor) {
+	return repository.listaPorCorreoDiferenteSiMismoActualiza(nombreProveedor, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaPorTelefonoDiferenteSiMismoActualiza(String telefono, int idProveedor) {
+		return repository.listaPorTelefonoDiferenteSiMismoActualiza(telefono, idProveedor);
+
+	}
 	
 	
 }
