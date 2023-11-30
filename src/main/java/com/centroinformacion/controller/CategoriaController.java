@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,6 +42,15 @@ public class CategoriaController {
 		activo.setDescripcionestado("Activo");
 		obj.setEstado(activo);
 
+		List<Categoria> lstDescripcion = service
+				.listaCategoriaPorDescripcionDiferenteSiMismo(obj.getDescripcionCategoria(), obj.getIdCategoria());
+		if (!CollectionUtils.isEmpty(lstDescripcion)) {
+			map.put("mensaje", "La categoria con la descripcion " + obj.getDescripcionCategoria() + " ya existe");
+			List<Categoria> lista = service.listaPorNombreCategoriaLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+
 		Categoria objSalida = service.insertaActualizaCategoria(obj);
 		if (objSalida == null) {
 			map.put("mensaje", "Error en el registro");
@@ -61,6 +71,15 @@ public class CategoriaController {
 		activo.setIdestado(2);
 		activo.setDescripcionestado("");
 		obj.setEstado(activo);
+
+		List<Categoria> lstDescripcion = service
+				.listaCategoriaPorDescripcionDiferenteSiMismo(obj.getDescripcionCategoria(), obj.getIdCategoria());
+		if (!CollectionUtils.isEmpty(lstDescripcion)) {
+			map.put("mensaje", "La categoria con la descripcion " + obj.getDescripcionCategoria() + " ya existe");
+			List<Categoria> lista = service.listaPorNombreCategoriaLike("%");
+			map.put("lista", lista);
+			return map;
+		}
 
 		Categoria objSalida = service.insertaActualizaCategoria(obj);
 		if (objSalida == null) {

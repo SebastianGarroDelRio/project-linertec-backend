@@ -31,7 +31,7 @@
 		<h3>CRUD DE CLIENTE</h3>
 	</div>
 
-<div class="container-fluid" style="margin-top: 1%">
+<div class="container" style="margin-top: 1%">
     <div class="panel-group" id="accordion">
         <!-- Panel con todo el contenido -->
         <div class="panel panel-default">
@@ -64,14 +64,10 @@
 							<thead>
 							<tr>
 									<th style="width: 5%">Código</th>
-									<th style="width: 10%">N.Cliente</th>
-									<th style="width: 10%">Correo Electrónico</th>
-									<th style="width: 10%">Teléfono</th>
-									<th style="width: 10%">Direccion</th>
-									<th style="width: 10%">Contacto</th>
-									<th style="width: 10%">T.Contacto</th>
-									<th style="width: 10%">Fecha Nacimiento</th>
+									<th style="width: 10%">Nombre</th>
+									<th style="width: 10%">Correo</th>
 									<th style="width: 10%">Tipo Documento</th>
+									<th style="width: 10%">Numero documento</th>
 									<th style="width: 5%">Actualizar</th>
 									<th style="width: 5%">Eliminar</th>
 							</tr> 
@@ -405,22 +401,10 @@
 											data : "correo"
 										},
 										{
-											data : "telefono"
-										},
-										{
-											data : "direccion"
-										},
-										{
-											data : "nombreContacto"
-										},
-										{
-											data : "telefonoContacto"
-										},
-										{
-											data : "fechaNacimiento"
-										},
-										{
 											data : "tipoDocumento.nombreDocumento"
+										},
+										{
+											data : "numeroDocumento"
 										},
 										{
 											data : function(row, type, val,

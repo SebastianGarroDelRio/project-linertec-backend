@@ -22,4 +22,11 @@ public interface CategoriaService {
 	// LISTAR POR UN ID
 	public abstract Optional<Categoria> listaCategoriaPorId(int idCategoria);
 
+	// VALIDACIONES REGISTRAR
+	public abstract List<Categoria> listaCategoriaPorDescripcionDiferenteSiMismo(String descripcionCategoria,
+			int idCategoria);
+
+	public abstract List<Categoria> listaCategoriaPorDescripcionDiferenteSiMismoActualiza(String descripcionCategoria,
+			int idCategoria);
+
 }

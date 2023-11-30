@@ -35,7 +35,9 @@ public class Proveedor {
 	private String direccion;
 	private String nombreContacto;
 	private String telefonoContacto;
+	private String numeroDocumento;
 
+	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
@@ -51,6 +53,5 @@ public class Proveedor {
 	@JoinColumn(name = "idestado")
 	private Estado estado;
 
-	// private int estado;
 
 }

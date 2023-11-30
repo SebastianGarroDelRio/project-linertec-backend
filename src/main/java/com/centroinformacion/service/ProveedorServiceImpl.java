@@ -10,8 +10,8 @@ import com.centroinformacion.entity.Proveedor;
 import com.centroinformacion.repository.ProveedorRepository;
 
 @Service
-public class ProveedorServiceImpl implements ProveedorService{
-	
+public class ProveedorServiceImpl implements ProveedorService {
+
 	@Autowired
 	private ProveedorRepository repository;
 
@@ -19,35 +19,10 @@ public class ProveedorServiceImpl implements ProveedorService{
 	public List<Proveedor> listaTodos() {
 		return repository.findAll();
 	}
-    
-	// Validacion 
-	
-	@Override
-	public List<Proveedor> listaProvedorNombreIgualActualiza(String nombreProveedor, int idProveedor) {
-		return repository.listaProvedorNombreIgualActualiza(nombreProveedor, idProveedor);
-	}
 
-	@Override
-	public List<Proveedor> listaProvedorTelefonoIgualActualiza(String telefono, int idProveedor) {
-		return repository.listaProvedorTelefonoIgualActualiza(telefono, idProveedor);			
-	}
-
-	@Override
-	public List<Proveedor> listaProvedorDireccionIgualActualiza(String direccion, int idProveedor) {
-	    return repository.listaProvedorDireccionIgualActualiza(direccion, idProveedor);
-	}
-
-	@Override
-	public List<Proveedor> listaProvedorCorreoIgualActualiza(String correo, int idProveedor) {
-		return repository.listaProvedorCorreoIgualActualiza(correo, idProveedor);
-				
-	}
- 
-	
-	//
 	@Override
 	public List<Proveedor> listaPorNombreLike(String filtro) {
-	    return repository.listaPorNombreLike(filtro);
+		return repository.listaPorNombreLike(filtro);
 	}
 
 	@Override
@@ -64,9 +39,8 @@ public class ProveedorServiceImpl implements ProveedorService{
 	public List<Proveedor> listaPorCorreoLike(String filtro) {
 		return repository.listaPorCorreoLike(filtro);
 	}
-	
-	
-	//CRUD
+
+	// CRUD
 	@Override
 	public Proveedor insertaActualizaProveedor(Proveedor obj) {
 		return repository.save(obj);
@@ -81,7 +55,67 @@ public class ProveedorServiceImpl implements ProveedorService{
 	public Optional<Proveedor> listaProveedorPorId(int idProveedor) {
 		return repository.findById(idProveedor);
 	}
-	
-	
-	
+
+	@Override
+	public List<Proveedor> listaProveedorPorNombreDiferenteSiMismo(String nombreProveedor, int idProveedor) {
+		return repository.listaPorNombreDiferenteSiMismo(nombreProveedor, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorCorreoDiferenteSiMismo(String correo, int idProveedor) {
+		return repository.listaPorCorreoDiferenteSiMismo(correo, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorTelefonoDiferenteSiMismo(String telefono, int idProveedor) {
+		return repository.listaPorTelefonoDiferenteSiMismo(telefono, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorDireccionDiferenteSiMismo(String direccion, int idProveedor) {
+		return repository.listaPorNombreDiferenteSiMismo(direccion, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorTelefonoContactoDiferenteSiMismo(String telefonoContacto, int idProveedor) {
+		return repository.listaPorTelefonoContactoDiferenteSiMismo(telefonoContacto, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorNumeroDocumentoDiferenteSiMismo(String numeroDocumento, int idProveedor) {
+		return repository.listaPornumeroDocumentoDiferenteSiMismo(numeroDocumento, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorNombreDiferenteSiMismoActualiza(String nombreProveedor, int idProveedor) {
+		return repository.listaPorNombreDiferenteSiMismoActualiza(nombreProveedor, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorCorreoDiferenteSiMismoActualiza(String correo, int idProveedor) {
+		return repository.listaPorCorreoDiferenteSiMismoActualiza(correo, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorTelefonoDiferenteSiMismoActualiza(String telefono, int idProveedor) {
+		return repository.listaPorTelefonoDiferenteSiMismoActualiza(telefono, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorDireccionDiferenteSiMismoActualiza(String direccion, int idProveedor) {
+		return repository.listaPorDireccionDiferenteSiMismoActualiza(direccion, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorTelefonoContactoDiferenteSiMismoActualiza(String telefonoContacto,
+			int idProveedor) {
+		return repository.listaPorTelefonoContactoDiferenteSiMismoActualiza(telefonoContacto, idProveedor);
+	}
+
+	@Override
+	public List<Proveedor> listaProveedorPorNumeroDocumentoDiferenteSiMismoActualiza(String numeroDocumento,
+			int idProveedor) {
+		return repository.listaPornumeroDocumentoDiferenteSiMismoActualiza(numeroDocumento, idProveedor);
+	}
+
 }
