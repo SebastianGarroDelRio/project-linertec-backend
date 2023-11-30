@@ -36,7 +36,6 @@ public class Proveedor {
 	private String nombreContacto;
 	private String telefonoContacto;
 	private String numeroDocumento;
-
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
