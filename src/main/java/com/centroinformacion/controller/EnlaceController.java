@@ -65,5 +65,8 @@ public class EnlaceController {
 	
 	@GetMapping("/verAsignacionRol")
 	public String verAsignacionRol() {	return "intranetAsignacionRol";	}
+	
+	@GetMapping("/verConsultaContrato")
+	public String verConsultaContrato() {	return "intranetConsultaContrato";	}
 
 }

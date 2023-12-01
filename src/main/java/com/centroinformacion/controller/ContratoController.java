@@ -118,7 +118,6 @@ public class ContratoController {
 							+ "</td><td>" + x.getCostoServicio()
 							+ "</td><td>" + x.getImpuesto()
 							+ "</td><td>" + x.getTotalParcial() + "</td></tr>";
-					//monto += x.getCostoServicio() + (x.getImpuesto() / 100);
 					monto += x.getImpuesto() * x.getCostoServicio();
 				}
 				salida += "</table><br>";
@@ -130,5 +129,18 @@ public class ContratoController {
 		
 		return objMensaje;
 	}
+	
+	
+	@GetMapping("/consultaContrato")
+	@ResponseBody
+	public List<Contrato> consultaContrato(int idEstadoContrato)
+	{
+		List<Contrato> salida = service.listaConsultaContrato(idEstadoContrato);
+			return salida;
+	}
+	
+	
+	
+	
 	
 }

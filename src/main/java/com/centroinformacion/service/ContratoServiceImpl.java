@@ -13,9 +13,6 @@ import com.centroinformacion.repository.ContratoRepository;
 
 import jakarta.transaction.Transactional;
 
-
-
-
 @Service
 public class ContratoServiceImpl implements ContratoService{
 
@@ -61,6 +58,11 @@ public class ContratoServiceImpl implements ContratoService{
 	@Override
 	public List<ContratoHasServicio> listaDetalle(int idContrato) {
 		return detalleRepository.listaDetalle(idContrato);
+	}
+
+	@Override
+	public List<Contrato> listaConsultaContrato(int idEstadoContrato) {
+		return repository.listaContrato(idEstadoContrato);
 	}
 	
 

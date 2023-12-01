@@ -34,4 +34,8 @@ public class Categoria {
 	@JoinColumn(name = "idestado")
 	private Estado estado;
 	
+	public String getReporteEstado() {
+		return estado.getIdestado() + " - " + estado.getDescripcionestado();
+	}
+	
 }

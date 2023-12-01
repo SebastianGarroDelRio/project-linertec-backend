@@ -22,6 +22,10 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
 <link rel="stylesheet" href="css/bootstrapValidator.css" />
 
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@mdi/font@7.3.67/css/materialdesignicons.min.css" />
+
+
 <title>Categoria</title>
 </head>
 <body>
@@ -48,27 +52,47 @@
 								<input class="form-control" id="id_txt_filtro" name="filtro"
 									placeholder="Ingrese el Categoria" type="text" maxlength="30" />
 							</div>
+
 							<div class="col-md-2">
 								<button type="button" class="btn btn-primary"
-									id="id_btn_filtrar" style="width: 150px">FILTRAR</button>
+									id="id_btn_filtrar" style="width: 150px">
+									<span class="mdi mdi-filter" style="font-size: 15px">FILTRAR</span>
+								</button>
 							</div>
+
 							<div class="col-md-2">
 								<button type="button" data-toggle='modal'
 									data-target="#id_div_modal_registra" class='btn btn-success'
-									style="width: 150px">REGISTRAR</button>
+									style="width: 150px">
+									<span class="mdi mdi-plus-thick" style="font-size: 15px">REGISTRAR</span>
+								</button>
 							</div>
+
+							<div class="col-md-2">
+								<button type="button" class="btn btn-danger" id="id_btn_reporte"
+									style="width: 150px">
+									<span class="mdi mdi-download" style="font-size: 15px">PDF</span>
+								</button>
+							</div>
+							<div class="col-md-2">
+								<button type="button" class="btn btn-success"
+									id="id_btn_reporte_excel" style="width: 150px">
+									<span class="mdi mdi-download" style="font-size: 15px">EXCEL</span>
+								</button>
+							</div>
+
 						</div>
+
 						<div class="row">
 							<div class="col-md-12">
 								<div class="content">
 									<table id="id_table" class="table table-striped table-bordered">
 										<thead>
 											<tr>
-												<th style="width: 5%">Código</th>
-												<th style="width: 45%">Descripcion</th>
-												<th style="width: 40%">Estado</th>
-												<th style="width: 5%">Actualizar</th>
-												<th style="width: 50%">Eliminar</th>
+												<th style="width: 5%">CÓDIGO</th>
+												<th style="width: 45%">DESCRIPCIÓN</th>
+												<th style="width: 45%">ESTADO</th>
+												<th style="width: 5%">OPCIONES</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -215,6 +239,17 @@
 
 	<script type="text/javascript">
 	<!-- Agregar aquí -->
+		$("#id_btn_reporte").click(
+				function() {
+					// Puedes ajustar la URL según tu configuración y mapeo de controladores en Spring Boot
+					var url = "/reporteCategoriaPdf?estado=" + estado
+							+ "&descripcionCategoria="
+							+ $("#id_txt_filtro").val();
+
+					// Abre una nueva ventana o pestaña con la URL del controlador
+					window.open(url, '_blank');
+				});
+
 		$.getJSON("listaEstado", {}, function(data) {
 			$.each(data, function(i, item) {
 				$("#id_reg_estado").append(
@@ -278,23 +313,21 @@
 										{
 											data : function(row, type, val,
 													meta) {
-												var salida = '<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\''
+												var salida = '<button type="button" style="font-size: 20px" class="btn btn-info btn-sm mdi mdi-square-edit-outline" onclick="editar(\''
 														+ row.idCategoria
 														+ '\',\''
 														+ row.descripcionCategoria
 														+ '\',\''
 														+ row.estado.idestado
-														+ '\')">Editar</button>';
-												return salida;
-											},
-											className : 'text-center'
-										},
-										{
-											data : function(row, type, val,
-													meta) {
-												return '<button type="button" class="btn btn-danger btn-sm"  onClick="eliminacionFisica(\''
+														+ '\')"></button>';
+
+												salida += '&nbsp;'; // Agrega un espacio en blanco entre los botones
+
+												salida += '<button type="button" class="btn btn-danger btn-sm mdi mdi-trash-can-outline" style="font-size: 20px" onClick="eliminacionFisica(\''
 														+ row.idCategoria
-														+ '\');" >Eliminar</button>';
+														+ '\');" ></button>';
+
+												return salida;
 											},
 											className : 'text-center'
 										}, ]

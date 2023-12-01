@@ -29,4 +29,7 @@ public interface CategoriaService {
 	public abstract List<Categoria> listaCategoriaPorDescripcionDiferenteSiMismoActualiza(String descripcionCategoria,
 			int idCategoria);
 
+	// Consulta Alumno
+	public abstract List<Categoria> listaConsultaCategoria(String descripcionCategoria, int idestado);
+
 }

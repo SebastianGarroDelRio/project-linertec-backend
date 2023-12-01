@@ -51,4 +51,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 		return repository.listaPorDescripcionDiferenteSiMismoActualiza(descripcionCategoria, idCategoria);
 	}
 
+	@Override
+	public List<Categoria> listaConsultaCategoria(String descripcionCategoria, int idestado) {
+		return repository.listaConsultaCategoriaComplejo(descripcionCategoria, idestado);
+	}
+
 }
