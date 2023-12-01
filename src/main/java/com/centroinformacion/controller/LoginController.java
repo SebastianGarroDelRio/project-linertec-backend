@@ -49,6 +49,35 @@ public class LoginController {
 			return "intranetHome";
 		}
 	}
+
+
+	@PostMapping("/registerUser")
+	public String register(Usuario user, HttpSession session, HttpServletRequest request) {
+		Usuario usuario = servicio.insertaActualizaUsuario(user);
+		if (usuario == null) {
+			request.setAttribute("mensaje", "El usuario no existe");
+			return "intranetLogin";
+		} else {
+			List<Rol> roles = servicio.traerRolesDeUsuario(usuario.getIdUsuario());
+			List<Opcion> menus = servicio.traerEnlacesDeUsuario(usuario.getIdUsuario());
+			List<Opcion> menusTipo1 = menus.stream().filter(p -> p.getTipo() == 1).toList();
+			List<Opcion> menusTipo2 = menus.stream().filter(p -> p.getTipo() == 2).toList();
+			List<Opcion> menusTipo3 = menus.stream().filter(p -> p.getTipo() == 3).toList();
+			List<Opcion> menusTipo4 = menus.stream().filter(p -> p.getTipo() == 4).toList();
+			List<Opcion> menusTipo5 = menus.stream().filter(p -> p.getTipo() == 5).toList();
+
+			/* barra de navegacion */
+			session.setAttribute("objUsuario", usuario); //donde se alamcena todo del usuario logueado
+			session.setAttribute("objMenusTipo1", menusTipo1);
+			session.setAttribute("objMenusTipo2", menusTipo2);
+			session.setAttribute("objMenusTipo3", menusTipo3);
+			session.setAttribute("objMenusTipo4", menusTipo4);
+			session.setAttribute("objMenusTipo5", menusTipo5);
+			session.setAttribute("objRoles", roles);
+
+			return "intranetHome";
+		}
+	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {

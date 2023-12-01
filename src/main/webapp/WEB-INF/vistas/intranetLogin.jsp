@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <!DOCTYPE html>
-<html lang="esS" >
+<html lang="es" >
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -24,7 +24,7 @@
 
 
 <title>Intranet</title>
-<!--<%@ include file="/WEB-INF/web/header2.jsp"%> -->
+<!--<%@ include file="../web/header2.jsp"%> -->
 </head>   
 <body>    
     <main>
@@ -37,12 +37,12 @@
                 <div class="contenedor__todo">
                     <div class="caja__trasera">
                         <div class="caja__trasera-login">
-                            <h1>¿Ya tienes una cuenta?</h1>
+                            <h1>Â¿Ya tienes una cuenta?</h1>
                             <p>Inicia sesion para entrar en la pagina</p>
                             <button id="btn__iniciar-sesion">Iniciar Sesion</button>
                         </div>
                         <div class="caja__trasera-register">
-                            <h1>¿No tienes una cuenta?</h1>
+                            <h1>Â¿No tienes una cuenta?</h1>
                             <p>Registrate para que puedas iniciar sesion</p>
                             <button id="btn__registrarse">Registrarse</button>
                         </div>
@@ -58,19 +58,22 @@
                                             <input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control" id="form-username" maxlength="20" value="luis">
                                         </div>
                                         <div class="form-group">
-                                            <label class="sr-only" for="form-password">Contraseña</label>
-                                            <input type="password" name="password" placeholder="Ingrese Contraseña" class="form-password form-control" id="form-password" maxlength="20" value="luis">
+                                            <label class="sr-only" for="form-password">Contraseï¿½a</label>
+                                            <input type="password" name="password" placeholder="Ingrese Contraseï¿½a" class="form-password form-control" id="form-password" maxlength="20" value="luis">
                                         </div>
                                     <button type="submit" >Entrar</button>
                             </form>
     
                         <!--Register-->
-                        <form action="" class="formulario__register">
+                        <form action="registerUser" class="formulario__register">
                             <h1>Registrarse</h1>
-                            <input type="text" placeholder="Nombre completo">
-                            <input type="text" placeholder="Correo Electronico">
-                            <input type="text" placeholder="Usuario">
-                            <input type="password" placeholder="Contraseña">
+                            <input type="text" name="nombres" placeholder="Nombre completo">
+                            <input type="text" name="apellidos" placeholder="Apellidos">
+                            <input type="text" name="dni" placeholder="DNI">
+                            <input type="text" name="direccion" placeholder="Direcci&oacute;n">
+                            <input type="text" name="correo" placeholder="Correo Electronico">
+                            <input type="text" name="usuario" placeholder="Usuario">
+                            <input type="password"  name="password" placeholder="Contrase&ntilde;a">
                             <button>Registrarse</button>
                         
                         </form>
@@ -113,10 +116,10 @@ $(document).ready(function() {
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'Ingresar su constraseña'
+                        message: 'Ingresar su constraseï¿½a'
                     },
                     stringLength :{
-                    	message: 'La contraseña es de 3 a 20 caracteres',
+                    	message: 'La contraseï¿½a es de 3 a 20 caracteres',
                     	min : 3,
                     	max : 20
                     }
