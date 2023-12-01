@@ -15,27 +15,21 @@ public interface ProveedorService {
 	public abstract void eliminaProveedorPorId(int idProveedor);
 	public abstract Optional<Proveedor> listaProveedorPorId(int idProveedor);
 	
-	
-	
-	public abstract List<Proveedor> listaProvedorNombreIgualActualiza(String nombreProveedor, int idProveedor);
-	public abstract List<Proveedor> listaProvedorTelefonoIgualActualiza(String telefono, int idProveedor);
-	public abstract List<Proveedor> listaProvedorDireccionIgualActualiza(String direccion, int idProveedor);
-	public abstract List<Proveedor> listaProvedorCorreoIgualActualiza(String correo, int idProveedor);
-	
 	public abstract List<Proveedor> listaPorNombreLike(String filtro);
 	public abstract List<Proveedor> listaPorTelefonoLike(String filtro);
 	public abstract List<Proveedor> listaPorDireccionLike(String filtro);
 	public abstract List<Proveedor> listaPorCorreoLike(String filtro);
 	
+	public abstract List<Proveedor> listaProveedorPorNombreDiferenteSiMismo(String nombreProveedor, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorCorreoDiferenteSiMismo(String correo, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorTelefonoDiferenteSiMismo(String telefono, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorTelefonoContactoDiferenteSiMismo(String telefonoContacto, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorNumeroDocumentoDiferenteSiMismo(String numeroDocumento, int idProveedor);
 	
-	public abstract List<Proveedor> listaPorCorreoDiferenteSiMismo(String correo);
-	public abstract List<Proveedor> listaProveedorNombreIgual(String nombreProveedor);
-	public abstract List<Proveedor> listaPorTelefonoDiferenteSiMismo(String telefono);
+	public abstract List<Proveedor> listaProveedorPorNombreDiferenteSiMismoActualiza(String nombreProveedor, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorCorreoDiferenteSiMismoActualiza(String correo, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorTelefonoDiferenteSiMismoActualiza(String telefono, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorTelefonoContactoDiferenteSiMismoActualiza(String telefonoContacto, int idProveedor);
+	public abstract List<Proveedor> listaProveedorPorNumeroDocumentoDiferenteSiMismoActualiza(String numeroDocumento, int idProveedor);
 	
-	
-    public abstract List<Proveedor> listaPorCorreoDiferenteSiMismoActualiza(String correo , int idProveedor);
-    public abstract List<Proveedor> listaProveedorNombreIgualActualiza(String nombreProveedor, int idProveedor);
-    public abstract List<Proveedor> listaPorTelefonoDiferenteSiMismoActualiza(String telefono , int idProveedor);
-
-
 }

@@ -31,13 +31,13 @@
 	     	</li>
      	</c:if>
      	
-     	<c:if test="${ !empty sessionScope.objMenusTipo3}">
+     	<c:if test="${ !empty sessionScope.objMenusTipo2}">
 	    	<li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		           Servicios<b class="caret"></b>
 		        </a>
 		        <ul class="dropdown-menu">
-		        	<c:forEach var="x" items="${sessionScope.objMenusTipo3}">
+		        	<c:forEach var="x" items="${sessionScope.objMenusTipo2}">
 						<li>
 		        			<a href="${x.ruta}"> ${x.nombre} </a>
 		        		</li>
@@ -46,13 +46,13 @@
 	     	</li>
      	</c:if>
      	
-      	<c:if test="${ !empty sessionScope.objMenusTipo2}">
+      	<c:if test="${ !empty sessionScope.objMenusTipo3}">
 	    	<li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		           Ventas<b class="caret"></b>
 		        </a>
 		        <ul class="dropdown-menu">
-		        	<c:forEach var="x" items="${sessionScope.objMenusTipo2}">
+		        	<c:forEach var="x" items="${sessionScope.objMenusTipo3}">
 						<li>
 		        			<a href="${x.ruta}"> ${x.nombre} </a>
 		        		</li>

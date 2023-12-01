@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,34 +36,46 @@ public class ProveedorController {
 	public Map<?, ?> registra(Proveedor obj, HttpSession session) {
 	    HashMap<String, Object> map = new HashMap<String, Object>();
 
-	    // Validación de Nombre
-	    List<Proveedor> lstNombre = service.listaProveedorNombreIgual(obj.getNombreProveedor());
-	    if (!CollectionUtils.isEmpty(lstNombre)) {
-	        map.put("mensaje", "El Proveedor " + obj.getNombreProveedor() + " ya existe");
-	        List<Proveedor> lista = service.listaPorNombreLike("%");
-	        map.put("lista", lista);
-	        return map;
-	    }
-
-	    // Validación de Correo
-	    List<Proveedor> lstCorreo = service.listaPorCorreoDiferenteSiMismo(obj.getCorreo());
-	    if (!CollectionUtils.isEmpty(lstCorreo)) {
-	        map.put("mensaje", "Ya existe un Proveedor con el correo " + obj.getCorreo());
-	        List<Proveedor> lista = service.listaPorCorreoLike("%");
-	        map.put("lista", lista);
-	        return map;
-	    }
-
-	    // Validación de Teléfono
-	    List<Proveedor> lstTelefono = service.listaPorTelefonoDiferenteSiMismo(obj.getTelefono());
-	    if (!CollectionUtils.isEmpty(lstTelefono)) {
-	        map.put("mensaje", "El Proveedor con teléfono " + obj.getTelefono() + " ya existe");
-	        List<Proveedor> lista = service.listaPorTelefonoLike("%");
-	        map.put("lista", lista);
-	        return map;
-	    }
-
-	    
+		List<Proveedor> lstNombre = service.listaProveedorPorNombreDiferenteSiMismo(obj.getNombreProveedor(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstNombre)) {
+			map.put("mensaje", "El Proveedor con el nombre " + obj.getNombreProveedor() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstCorreo = service.listaProveedorPorCorreoDiferenteSiMismo(obj.getCorreo(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstCorreo)) {
+			map.put("mensaje", "El Proveedor con el correo " + obj.getCorreo() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstTelefono = service.listaProveedorPorTelefonoDiferenteSiMismo(obj.getTelefono(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstTelefono)) {
+			map.put("mensaje", "El Proveedor con el número de telefono " + obj.getTelefono() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstTelefonoC = service.listaProveedorPorTelefonoContactoDiferenteSiMismo(obj.getTelefonoContacto(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstTelefonoC)) {
+			map.put("mensaje", "El Proveedor con el número de telefono " + obj.getTelefonoContacto() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstNumeroD = service.listaProveedorPorNumeroDocumentoDiferenteSiMismo(obj.getNumeroDocumento(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstNumeroD)) {
+			map.put("mensaje", "El Proveedor con el número de documento " + obj.getNumeroDocumento() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
 	    obj.setFechaRegistro(new Date());
 	    Estado activo = new Estado();
 	    activo.setIdestado(1);
@@ -88,46 +99,55 @@ public class ProveedorController {
 	public Map<?, ?> actualiza(Proveedor obj, HttpSession session) {
 	    HashMap<String, Object> map = new HashMap<String, Object>();
 
-	    // Validación de Nombre
-	    List<Proveedor> lstNombre = service.listaProveedorNombreIgualActualiza(obj.getNombreProveedor(), obj.getIdProveedor());
-	    if (!CollectionUtils.isEmpty(lstNombre)) {
-	        map.put("mensaje", "El Proveedor " + obj.getNombreProveedor() + " ya existe");
-	        List<Proveedor> lista = service.listaPorNombreLike("%");
-	        map.put("lista", lista);
-	        return map;
-	    }
+		List<Proveedor> lstNombre = service.listaProveedorPorNombreDiferenteSiMismoActualiza(obj.getNombreProveedor(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstNombre)) {
+			map.put("mensaje", "El Proveedor con el nombre " + obj.getNombreProveedor() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstCorreo = service.listaProveedorPorCorreoDiferenteSiMismoActualiza(obj.getCorreo(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstCorreo)) {
+			map.put("mensaje", "El Proveedor con el correo " + obj.getCorreo() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstTelefono = service.listaProveedorPorTelefonoDiferenteSiMismoActualiza(obj.getTelefono(), obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstTelefono)) {
+			map.put("mensaje", "El Proveedor con el número de telefono " + obj.getTelefono() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		List<Proveedor> lstTelefonoC = service.listaProveedorPorTelefonoContactoDiferenteSiMismoActualiza(obj.getTelefonoContacto(),
+				obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstTelefonoC)) {
+			map.put("mensaje", "El Proveedor con el número de telefono " + obj.getTelefonoContacto() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		
+		List<Proveedor> lstNumeroD = service.listaProveedorPorNumeroDocumentoDiferenteSiMismoActualiza(obj.getNumeroDocumento(),
+				obj.getIdProveedor());
+		if (!CollectionUtils.isEmpty(lstNumeroD)) {
+			map.put("mensaje", "El Proveedor con el número de documento " + obj.getNumeroDocumento() + " ya existe");
+			List<Proveedor> lista = service.listaPorNombreLike("%");
+			map.put("lista", lista);
+			return map;
+		}
+		
+		Estado activo = new Estado();
+		activo.setIdestado(2);
+		activo.setDescripcionestado("");
+		obj.setEstado(activo);
 
-	    // Validación de Correo
-	    List<Proveedor> lstCorreo = service.listaPorCorreoDiferenteSiMismoActualiza(obj.getCorreo(), obj.getIdProveedor());
-	    if (!CollectionUtils.isEmpty(lstCorreo)) {
-	        map.put("mensaje", "Ya existe un Proveedor con el correo " + obj.getCorreo());
-	        List<Proveedor> lista = service.listaPorCorreoLike("%");
-	        map.put("lista", lista);
-	        return map;
-	    }
-
-	    // Validación de Teléfono
-	    List<Proveedor> lstTelefono = service.listaPorTelefonoDiferenteSiMismoActualiza(obj.getTelefono(), obj.getIdProveedor());
-	    if (!CollectionUtils.isEmpty(lstTelefono)) {
-	        map.put("mensaje", "El Proveedor con teléfono " + obj.getTelefono() + " ya existe");
-	        List<Proveedor> lista = service.listaPorTelefonoLike("%");
-	        map.put("lista", lista);
-	        return map;
-	    }
-
-	    // Obtener información actual del proveedor
-	    Optional<Proveedor> optAlumno = service.listaProveedorPorId(obj.getIdProveedor());
-
-	    // Establecer datos de actualización
-	    obj.setFechaRegistro(optAlumno.get().getFechaRegistro());
-	    Estado activo = new Estado();
-	    activo.setIdestado(2);
-	    activo.setDescripcionestado("");
-	    obj.setEstado(activo);
-
-	    // Realizar la actualización del proveedor
 	    Proveedor objSalida = service.insertaActualizaProveedor(obj);
-
 	    if (objSalida == null) {
 	        map.put("mensaje", "Error al actualizar");
 	    } else {
@@ -145,9 +165,8 @@ public class ProveedorController {
          
 		Proveedor obj = service.listaProveedorPorId(id).get();	
 
-		// obj.setEstado(obj.getEstado() == 1 ? 0 : 1);
 		Estado activo = new Estado();
-		activo.setIdestado( obj.getEstado().getIdestado() == 2? 1:2);
+		activo.setIdestado(obj.getEstado().getIdestado() == 2 ? 1 : 2);
 		activo.setDescripcionestado("");
 		obj.setEstado(activo);
 		Proveedor objSalida = service.insertaActualizaProveedor(obj);
@@ -159,40 +178,5 @@ public class ProveedorController {
 		}
 		return map;
 	}
-
-	/*
-	 * //
-	 * 
-	 * @GetMapping("/consultaCrudProovedor/nombre")
-	 * 
-	 * @ResponseBody public List<Proveedor> listaProveedor(String filtro) {
-	 * List<Proveedor> listProveedor = service.listaPorNombreLike("%" + filtro +
-	 * "%"); return listProveedor; }
-	 * 
-	 * @GetMapping("/consultaCrudProovedor/telefono")
-	 * 
-	 * @ResponseBody public List<Proveedor> listaTelefono(String filtro) {
-	 * List<Proveedor> lisTelefono = service.listaPorTelefonoLike("%" + filtro +
-	 * "%"); return lisTelefono; }
-	 * 
-	 * @GetMapping("/consultaCrudProovedor/direccion")
-	 * 
-	 * @ResponseBody public List<Proveedor> listaDireccion(String filtro) {
-	 * List<Proveedor> listDireccion = service.listaPorDireccionLike("%" + filtro +
-	 * "%"); return listDireccion; }
-	 * 
-	 * @GetMapping("/consultaCrudProovedor/correo")
-	 * 
-	 * @ResponseBody public List<Proveedor> listaCorreo(String filtro) {
-	 * List<Proveedor> listCorreo = service.listaPorCorreoLike("%" + filtro + "%");
-	 * return listCorreo; }
-	 */
-	
-	
-	
-	
-
-	
-	
 	
 }

@@ -112,7 +112,7 @@
 							Unitario</label> <input class="form-control" type="number"
 							id="id_precioUnitario" name="precioUnitario"
 							placeholder="Ingrese el precio unitario"
-							oninput="calcularTotal()">
+							oninput="calcularTotal()" disabled>
 					</div>
 
 					<div class="form-group col-md-3">
@@ -134,22 +134,47 @@
 
 	<script type="text/javascript">
 	<!-- Agregar aquí -->
+		function obtenerPrecioUnitario(idProducto) {
+			// Hacer una solicitud AJAX para obtener el precio unitario del producto
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === XMLHttpRequest.DONE) {
+					if (xhr.status === 200) {
+						var response = JSON.parse(xhr.responseText);
+						var precioUnitario = response.precioUnitario;
+						// Maneja el precio unitario obtenido
+						document.getElementById('id_precioUnitario').value = precioUnitario;
+						// Realiza los cálculos necesarios
+						calcularTotal();
+					} else {
+						// Manejar errores
+					}
+				}
+			};
 
-    function calcularTotal() {
-        // Obtener la cantidad y el precio unitario
-        var cantidad = document.getElementById('id_cantidad').value;
-        var precioUnitario = document.getElementById('id_precioUnitario').value;
+			xhr.open('GET', '/obtenerPrecioUnitario?id=' + idProducto, true);
+			xhr.send();
+		}
 
-        // Calcular el total
-        var total = cantidad * precioUnitario;
+		// Evento cuando se selecciona un producto del combo
+		document.getElementById('id_producto').addEventListener('change',
+				function() {
+					var productoSeleccionado = this.value;
+					obtenerPrecioUnitario(productoSeleccionado);
+				});
 
-        // Mostrar el total en el campo correspondiente
-        document.getElementById('id_total').value = total;
-    }
+		function calcularTotal() {
+			// Obtener la cantidad y el precio unitario
+			var cantidad = document.getElementById('id_cantidad').value;
+			var precioUnitario = document.getElementById('id_precioUnitario').value;
 
-	
-	
-	
+			// Calcular el total
+			var total = cantidad * precioUnitario;
+
+			// Mostrar el total en el campo correspondiente
+			document.getElementById('id_total').value = total;
+		}
+
 		$.getJSON("listaServicio", {}, function(data) {
 			$.each(data, function(i, item) {
 				$("#id_servicio").append(
@@ -240,6 +265,32 @@
 																});
 											});
 
+							// Resto del código para el cambio en el combo de servicio
+							$("#id_producto")
+									.change(
+											function() {
+												var idProductoSeleccionado = $(
+														this).val();
+
+												$
+														.getJSON(
+																"obtenerPrecioUnitario",
+																{
+																	idProducto : idProductoSeleccionado
+																},
+																function(data) {
+																	if (data.mensaje === "Obtención exitosa") {
+																		$(
+																				"#id_precioUnitario")
+																				.val(
+																						data.id_precioUnitario);
+																		// Aquí puedes seguir llenando los demás campos si es necesario
+																	} else {
+																		alert("Error al obtener detalles del servicio");
+																	}
+																});
+											});
+
 							// Código para llenar el combo de productos
 							$.getJSON("listaProducto", {}, function(data) {
 								$.each(data, function(i, item) {
@@ -250,6 +301,11 @@
 								});
 							});
 						});
+		
+		
+		
+		
+		
 	</script>
 </body>
 </html>

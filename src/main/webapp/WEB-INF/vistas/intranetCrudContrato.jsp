@@ -103,7 +103,7 @@
 								id="id_servicio_descripcion" class="form-control"
 								readonly="readonly" />
 						</div>
-						<div class="form-group  col-md-2" style="margin-left: 10px;">
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
 							<label class="control-label">Costo del Servicio</label> <input
 								type="text" name="costoServicio" id="id_servicio_costo"
 								class="form-control" readonly="readonly" />
@@ -113,19 +113,40 @@
 								type="text" name="tipoServicio" id="id_servicio_tipo"
 								class="form-control" readonly="readonly" />
 						</div>
-						<div class="form-group  col-md-2" style="margin-left: 10px;">
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
 							<label class="control-label">Estado</label> <input type="text"
 								name="estadoServicio" id="id_servicio_estado"
 								class="form-control" readonly="readonly" />
 						</div>
 
-						<div class="form-group  col-md-2" style="margin-left: 10px;">
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
 							<label class="control-label">IGV</label> <input type="text"
 								name="impuesto" id="id_servicio_impuesto" class="form-control"
 								placeholder="Ingrese el impuesto"
 								onkeypress="return validarSoloNumerosEnteros(event);" />
 						</div>
 
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
+							<label class="control-label">Fecha Inicio</label>
+							<input
+								type="date" name="fechainicio" id="id_servicio_fecinicio"
+								class="form-control"  />
+						</div>
+
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
+							<label class="control-label">Fecha Fin</label>
+							<input type="date"
+								name="fechafin" id="id_servicio_fecfin" class="form-control"/>
+						</div>
+
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
+							<label class="col-lg-3 control-label" for="id_estado">Estado</label>
+							<div class="col-lg-12">
+								<select id="id_estado" name="estado" class='form-control'>
+									<option value=" ">[Seleccione]</option>
+								</select>
+							</div>
+						</div>
 
 					</div>
 				</div>
@@ -150,18 +171,19 @@
 									class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th style="width: 5%">Código</th>
-											<th style="width: 30%">Nombre</th>
-											<th style="width: 20%">Costo</th>
-											<th style="width: 20%">Impuesto</th>
-											<th style="width: 20%">Subtotal</th>
-											<th style="width: 5%"></th>
+											<th style="width: 5%">CÓDIGO</th>
+											<th style="width: 20%">NOMBRE</th>
+											<th style="width: 10%">COSTO</th>
+											<th style="width: 10%">IMPUESTO</th>
+											<th style="width: 15%">FECHA INICIO</th>
+											<th style="width: 15%">FECHA FIN</th>
+											<th style="width: 10%">ESTADO</th>
+											<th style="width: 10%">SUBTOTAL</th>
+											<th style="width: 5%">ELIMINAR</th>
 										</tr>
 									</thead>
 									<tbody id="id_table_contrato_body">
-
 									</tbody>
-
 								</table>
 							</div>
 						</div>
@@ -292,21 +314,60 @@
 
 
 	<script type="text/javascript">
-	$(document).ready(function() {
-		//tabla seleccion
-		$.getJSON("listaSeleccion",{}, function (data){
-			$.each(data, function(index, item){
-				$('#id_table_contrato_body').append("<tr><td>" +item.idServicio + "</td><td>" +item.descripcionServicio + "</td><td>" +item.costoServicio + "</td><td>" +item.impuesto + "</td><td>" +item.totalParcial + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idServicio +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");                     
-			});
+	$.getJSON("listaEstadoContrato", {}, function(data) {
+		$.each(data, function(i, item) {
+			$("#id_estado").append(
+					"<option value="+item.idEstadoContrato +">"
+							+ item.descripcionEstadoContrato + "</option>");
 		});
 	});
 	
-	//Se anula el enter
-	$(document).on("keypress", "form", function(event) {
-	    return event.keyCode != 13;
-	});
-	
-	//Al pulsar el botón cliente
+		$(document)
+				.ready(
+						function() {
+							//tabla seleccion
+							$
+									.getJSON(
+											"listaSeleccion",
+											{},
+											function(data) {
+												$
+														.each(
+																data,
+																function(index,
+																		item) {
+																	$(
+																			'#id_table_contrato_body')
+																			.append(
+																					"<tr><td>"
+																							+ item.idServicio
+																							+ "</td><td>"
+																							+ item.descripcionServicio
+																							+ "</td><td>"
+																							+ item.costoServicio
+																							+ "</td><td>"
+																							+ item.impuesto
+																							+ "</td><td>"
+																							+ item.fechainicio
+																							+ "</td><td>"
+																							+ item.fechafin
+																							+ "</td><td>"
+																							+ item.estado
+																							+ "</td><td>"
+																							+ item.totalParcial
+																							+ "</td><td><button type='button' onclick='f_elimina_seleccion("
+																							+ item.idServicio
+																							+ ");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
+																});
+											});
+						});
+
+		//Se anula el enter
+		$(document).on("keypress", "form", function(event) {
+			return event.keyCode != 13;
+		});
+
+		//Al pulsar el botón cliente
 		$("#id_btnCliente").click(function() {
 			muestraCliente();
 			$("#idBuscaCliente").modal("show");
@@ -380,8 +441,8 @@
 		}
 
 		//Al pulsar selecciona cliente
-		function f_seleccione_cliente(id, nombreCliente, correo,
-				telefono, tipoDocumento, numeroDocumento, estado) {
+		function f_seleccione_cliente(id, nombreCliente, correo, telefono,
+				tipoDocumento, numeroDocumento, estado) {
 			$("#id_cliente_id").val(id);
 			$("#id_cliente_nombre").val(nombreCliente);
 			$("#id_cliente_correo").val(correo);
@@ -438,8 +499,8 @@
 		}
 
 		//Al pulsar selecciona servicio
-		function f_seleccione_servicio(id, descripcionServicio,
-				costoServicio, tipoServicio, estadoServicio) {
+		function f_seleccione_servicio(id, descripcionServicio, costoServicio,
+				tipoServicio, estadoServicio) {
 			$("#id_servicio_id").val(id);
 			$("#id_servicio_descripcion").val(descripcionServicio);
 			$("#id_servicio_costo").val(costoServicio);
@@ -458,76 +519,126 @@
 			return patron.test(te); // 6
 		}
 
-		
 		//Al pulsar el botón agregar
-		$("#id_btnAgregar").click(function (){
-			var var_ser = $("#id_servicio_id").val();
-			var var_imp = $("#id_servicio_impuesto").val();
-			
-			//Validar duplicados
-			var yaExiste = false;
-			$("#id_table_contrato_body tr").each(function() {
-				if($(this).find('td:eq(0)').html() == var_ser){
-					yaExiste = true;
-				}
-			});
-			
-			if ( var_ser == '-1' ){
-				$("#idMensajeTexto").text("Seleccione un Servicio");
-				$("#idMensaje").modal("show");
-			}else if ( var_imp == '' ){
-				$("#idMensajeTexto").text("Agrege un impuesto");
-				$("#idMensaje").modal("show");
-			}else if ( $.isNumeric( var_imp ) == false ){
-				$("#idMensajeTexto").text("El impuesto debe ser númerico");
-				$("#idMensaje").modal("show");
-			}else if (parseInt(var_imp) <= 0 ){
-				$("#idMensajeTexto").text("El impuesto debe ser postivo");
-				$("#idMensaje").modal("show");
-			}else if (yaExiste){
-				$("#idMensajeTexto").text("Existe el producto elegido");
-				$("#idMensaje").modal("show");
-			}else{
-				
-				var var_des = $("#id_servicio_descripcion").val();
-				var var_cos = $("#id_servicio_costo").val();
-				
-				//limpiar la tabla
-				$("#id_table_contrato_body").empty();
-				
-				var jsonParam = {"idServicio":var_ser,"descripcionServicio":var_des,"costoServicio":var_cos,"impuesto":var_imp};
-				
-				$.ajax({
-					url:  'agregarSeleccion',
-					type: 'POST',
-					dataType:'json',
-					data: jsonParam,
-					success:function(data){
-						console.log(data);
-						if(data != null){
-							$.each(data, function(index, item){
-								$('#id_table_contrato_body').append("<tr><td>" +item.idServicio + "</td><td>" +item.descripcionServicio + "</td><td>" +item.costoServicio + "</td><td>" +item.impuesto + "</td><td>" +item.totalParcial + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idServicio +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
-							});
-							
-						}else
-							swal("Error al agregar la selección del producto","","error");
-							return false;
-						},
-					error: function (jqXhr) { 
-						swal("Error en la conexión","","error");
-					}
-			   });	
-				//limpia las cajas de texto
-				$("#id_producto_id").val("-1");
-				$("#id_producto_nombre").val("");
-				$("#id_producto_precio").val("");
-				$("#id_producto_stock").val("");
-				$("#id_producto_cantidad").val("");
-			}
-		});
-		
+		$("#id_btnAgregar")
+				.click(
+						function() {
+							var var_ser = $("#id_servicio_id").val();
+							var var_imp = $("#id_servicio_impuesto").val();
+							var var_feci = $("#id_servicio_fecinicio").val();
+							var var_fecf = $("#id_servicio_fecfin").val();
+							var var_estc = $("#id_estado").val();
+
+							//Validar duplicados
+							var yaExiste = false;
+							$("#id_table_contrato_body tr")
+									.each(
+											function() {
+												if ($(this).find('td:eq(0)')
+														.html() == var_ser) {
+													yaExiste = true;
+												}
+											});
+
+							if (var_ser == '-1') {
+								$("#idMensajeTexto").text(
+										"Seleccione un Servicio");
+								$("#idMensaje").modal("show");
+							} else if (var_imp == '') {
+								$("#idMensajeTexto").text("Agrege un impuesto");
+								$("#idMensaje").modal("show");
+							} else if ($.isNumeric(var_imp) == false) {
+								$("#idMensajeTexto").text(
+										"El impuesto debe ser númerico");
+								$("#idMensaje").modal("show");
+							} else if (parseInt(var_imp) <= 0) {
+								$("#idMensajeTexto").text(
+										"El impuesto debe ser postivo");
+								$("#idMensaje").modal("show");
+							} else if (yaExiste) {
+								$("#idMensajeTexto").text(
+										"Existe el producto elegido");
+								$("#idMensaje").modal("show");
+							} else {
+
+								var var_des = $("#id_servicio_descripcion")
+										.val();
+								var var_cos = $("#id_servicio_costo").val();
+
+								//limpiar la tabla
+								$("#id_table_contrato_body").empty();
+
+								var jsonParam = {
+									"idServicio" : var_ser,
+									"descripcionServicio" : var_des,
+									"costoServicio" : var_cos,
+									"impuesto" : var_imp,
+									"fechainicio" : var_feci,
+									"fechafin" : var_fecf,
+									"estado" : var_estc
+								};
+
+								$
+										.ajax({	
+											url : 'agregarSeleccion',
+											type : 'POST',
+											dataType : 'json',
+											data : jsonParam,
+											success : function(data) {
+												console.log(data);
+												if (data != null) {
+													$
+															.each(
+																	data,
+																	function(
+																			index,
+																			item) {
+																		$(
+																				'#id_table_contrato_body')
+																				.append(
+																						"<tr><td>"
+																								+ item.idServicio
+																								+ "</td><td>"
+																								+ item.descripcionServicio
+																								+ "</td><td>"
+																								+ item.costoServicio
+																								+ "</td><td>"
+																								+ item.impuesto
+																								+ "</td><td>"
+																								+ item.fechainicio
+																								+ "</td><td>"
+																								+ item.fechafin
+																								+ "</td><td>"
+																								+ item.estado
+																								+ "</td><td>"
+																								+ item.totalParcial
+																								+ "</td><td><button type='button' onclick='f_elimina_seleccion("
+																								+ item.idServicio
+																								+ ");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td></tr>");
+																	});
+
+												} else
+													swal(
+															"Error al agregar la selección del producto",
+															"", "error");
+												return false;
+											},
+											error : function(jqXhr) {
+												swal("Error en la conexión",
+														"", "error");
+											}
+										});
+								//limpia las cajas de texto
+								$("#id_servicio_id").val("-1");
+								$("#id_servicio_impuesto").val("");
+								$("#id_servicio_fecinicio").val("");
+								$("#id_servicio_fecfin").val("");
+								$("#id_estado").val(" ");
+							}
+						});
+
 		//Al pulsar el botón registrar
-		$("#id_btnRegistrar").click(function (){
+		$("#id_btnRegistrar").click(function() {
 			var var_cli = $("#id_cliente_id").val();
 			var var_nom = $("#id_cliente_nombre").val();
 			var var_cor = $("#id_cliente_correo").val();
@@ -535,27 +646,29 @@
 			var var_doc = $("#id_cliente_documento").val();
 			var var_ndc = $("#id_cliente_numdocumento").val();
 			var var_est = $("#id_cliente_estado").val();
-			
+
 			var var_count = 0;
 			$("#id_table_contrato_body tr").each(function() {
 				var_count = var_count + 1;
 			});
-			
-			if (var_cli == "-1"){
+
+			if (var_cli == "-1") {
 				$("#idMensajeTexto").text("Seleccione un cliente");
 				$("#idMensaje").modal("show");
-			}else if (var_count < 1){
+			} else if (var_count < 1) {
 				$("#idMensajeTexto").text("Seleccione un servicio");
 				$("#idMensaje").modal("show");
-			}else{
-				var jsonParam = {"idCliente":var_cli};
+			} else {
+				var jsonParam = {
+					"idCliente" : var_cli
+				};
 				$.ajax({
-					url:  'registraContrato',
-					type: 'POST',
-					dataType:'json',
-					data: jsonParam,
-					success:function(data){
-						if(data.texto != "-1"){
+					url : 'registraContrato',
+					type : 'POST',
+					dataType : 'json',
+					data : jsonParam,
+					success : function(data) {
+						if (data.texto != "-1") {
 							console.log(data.texto);
 							$("#idMensajeTexto").html(data.texto);
 							$("#idMensaje").modal("show");
@@ -567,41 +680,65 @@
 							$("#id_cliente_documento").val("");
 							$("#id_cliente_numdocumento").val("");
 							$("#id_cliente_estado").val("");
-						}else
-							swal("Error al agregar el contrato","","error");
-							return false;
-						},
-					error: function (jqXhr) { 
-						swal("Error en la conexión","","error");
+						} else
+							swal("Error al agregar el contrato", "", "error");
+						return false;
+					},
+					error : function(jqXhr) {
+						swal("Error en la conexión", "", "error");
 					}
-			   });	
+				});
 			}
 		});
-		
-		
+
 		//Al pulsar el botón eliminar
-		function f_elimina_seleccion(id){	
+		function f_elimina_seleccion(id) {
 			//limpiar la tabla
 			$("#id_table_contrato_body").empty();
-				
+
 			//Se añade los clientes a la tabla
-			$.getJSON("eliminaSeleccion",{"idServicio":id}, function (data){
-				$.each(data, function(index, item){
-					$('#id_table_contrato_body').append("<tr><td>" +item.idServicio + "</td><td>" +item.descripcionServicio + "</td><td>" +item.costoServicio + "</td><td>" +item.impuesto + "</td><td>" +item.totalParcial + "</td><td><button type='button' onclick='f_elimina_seleccion(" + item.idServicio +");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><tr>");
-				});
-			});
+			$
+					.getJSON(
+							"eliminaSeleccion",
+							{
+								"idServicio" : id
+							},
+							function(data) {
+								$
+										.each(
+												data,
+												function(index, item) {
+													$('#id_table_contrato_body')
+															.append(
+																	"<tr><td>"
+																			+ item.idServicio
+																			+ "</td><td>"
+																			+ item.descripcionServicio
+																			+ "</td><td>"
+																			+ item.costoServicio
+																			+ "</td><td>"
+																			+ item.impuesto
+																			+ "</td><td>"
+																			+ item.fechainicio
+																			+ "</td><td>"
+																			+ item.fechafin
+																			+ "</td><td>"
+																			+ item.estado
+																			+ "</td><td>"
+																			+ item.totalParcial
+																			+ "</td><td><button type='button' onclick='f_elimina_seleccion("
+																			+ item.idServicio
+																			+ ");' class='btn btn-default' aria-label='Left Align' ><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><tr>");
+												});
+							});
 
 			//limpia las cajas de texto
-			$("#id_producto_id").val("-1");
-			$("#id_producto_nombre").val("");
-			$("#id_producto_precio").val("");
-			$("#id_producto_stock").val("");
-			$("#id_producto_cantidad").val("");
+			$("#id_servicio_id").val("-1");
+			$("#id_servicio_impuesto").val("");
+			$("#id_servicio_fecinicio").val("");
+			$("#id_servicio_fecfin").val("");
+			$("#id_estado").val(" ");
 		}
-			
-	
-		
-		
-		</script>
+	</script>
 </body>
 </html>

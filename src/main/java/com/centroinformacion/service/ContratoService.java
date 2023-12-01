@@ -24,5 +24,9 @@ public interface ContratoService {
 	public abstract List<Contrato> listaContrato(int idCliente);
 	public abstract List<ContratoHasServicio> listaDetalle(int idContrato);
 	
+	//Consulta Contrato
+	public abstract List<Contrato> listaConsultaContrato(int estadoContrato);
+
+	
 	
 }

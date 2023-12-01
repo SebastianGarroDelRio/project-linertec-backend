@@ -9,13 +9,12 @@ import org.springframework.stereotype.Service;
 import com.centroinformacion.entity.Categoria;
 import com.centroinformacion.repository.CategoriaRepository;
 
-
 @Service
-public class CategoriaServiceImpl implements CategoriaService{
+public class CategoriaServiceImpl implements CategoriaService {
 
 	@Autowired
 	CategoriaRepository repository;
-	
+
 	@Override
 	public List<Categoria> listaTodos() {
 		return repository.findAll();
@@ -41,8 +40,20 @@ public class CategoriaServiceImpl implements CategoriaService{
 	public Optional<Categoria> listaCategoriaPorId(int idCategoria) {
 		return repository.findById(idCategoria);
 	}
-	
-	
-	
-	
+
+	@Override
+	public List<Categoria> listaCategoriaPorDescripcionDiferenteSiMismo( String descripcionCategoria, int idCategoria) {
+		return repository.listaPorDescripcionDiferenteSiMismo(descripcionCategoria, idCategoria);
+	}
+
+	@Override
+	public List<Categoria> listaCategoriaPorDescripcionDiferenteSiMismoActualiza(String descripcionCategoria, int idCategoria) {
+		return repository.listaPorDescripcionDiferenteSiMismoActualiza(descripcionCategoria, idCategoria);
+	}
+
+	@Override
+	public List<Categoria> listaConsultaCategoria(String descripcionCategoria, int idestado) {
+		return repository.listaConsultaCategoriaComplejo(descripcionCategoria, idestado);
+	}
+
 }

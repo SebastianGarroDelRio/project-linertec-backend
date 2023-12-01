@@ -7,19 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.centroinformacion.entity.Proveedor;
 
-public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
-  
-	@Query("SELECT e FROM Proveedor e WHERE e.nombreProveedor = ?1 AND e.idProveedor <> ?2 AND e.idProveedor != ?3")
-	public List<Proveedor> listaProvedorNombreIgualActualiza(String nombreProveedor, int idProveedor);
-
-	@Query("SELECT e FROM Proveedor e WHERE e.telefono = ?1 AND e.idProveedor <> ?2 AND e.idProveedor != ?3")
-	public List<Proveedor> listaProvedorTelefonoIgualActualiza(String telefono, int idProveedor);
-
-	@Query("SELECT e FROM Proveedor e WHERE e.direccion = ?1 AND e.idProveedor <> ?2 AND e.idProveedor != ?3")
-	public List<Proveedor> listaProvedorDireccionIgualActualiza(String direccion, int idProveedor);
-
-	@Query("SELECT e FROM Proveedor e WHERE e.correo = ?1 AND e.idProveedor <> ?2 AND e.idProveedor != ?3")
-	public List<Proveedor> listaProvedorCorreoIgualActualiza(String correo, int idProveedor);
+public interface ProveedorRepository extends JpaRepository<Proveedor, Integer> {
 
 	@Query("SELECT e FROM Proveedor e WHERE e.nombreProveedor LIKE ?1")
 	public List<Proveedor> listaPorNombreLike(String filtro);
@@ -32,24 +20,29 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
 
 	@Query("SELECT e FROM Proveedor e WHERE e.correo LIKE ?1")
 	public List<Proveedor> listaPorCorreoLike(String filtro);
-	    
-    //Validaciones para Registrar
-    @Query("select p from Proveedor p where p.correo = ?1")
-    public List<Proveedor> listaPorCorreoDiferenteSiMismo(String correo);
-    
-    @Query("select p from Proveedor p where p.nombreProveedor = ?1")
-    public List<Proveedor> listaProveedorNombreIgual(String nombreProveedor);
+	
+	// VALIDACIONES
+	@Query("SELECT e FROM Proveedor e WHERE e.nombreProveedor = ?1 and e.idProveedor <> ?2 ")
+	public List<Proveedor> listaPorNombreDiferenteSiMismo(String nombreProveedor, int idProveedor);
+	@Query("SELECT e FROM Proveedor e WHERE e.correo = ?1 and e.idProveedor <> ?2 ")
+	public List<Proveedor> listaPorCorreoDiferenteSiMismo(String correo, int idProveedor);
+	@Query("SELECT e FROM Proveedor e WHERE e.telefono = ?1 AND e.idProveedor <> ?2 ")
+	public List<Proveedor> listaPorTelefonoDiferenteSiMismo(String telefono, int idProveedor);
+	@Query("SELECT e FROM Proveedor e WHERE e.telefonoContacto = ?1 AND e.idProveedor <> ?2 ")
+	public List<Proveedor> listaPorTelefonoContactoDiferenteSiMismo(String telefonoContacto, int idProveedor);
+	@Query("select e from Proveedor e where e.numeroDocumento = ?1 and e.idProveedor <> ?2 ")
+	public List<Proveedor> listaPornumeroDocumentoDiferenteSiMismo(String numeroDocumento, int idProveedor);
+	
+	
+	@Query("SELECT e FROM Proveedor e WHERE e.nombreProveedor = ?1 AND e.idProveedor != ?2 ")
+	public List<Proveedor> listaPorNombreDiferenteSiMismoActualiza(String nombreProveedor, int idProveedor);
+	@Query("SELECT e FROM Proveedor e WHERE e.correo = ?1 AND e.idProveedor != ?2 ")
+	public List<Proveedor> listaPorCorreoDiferenteSiMismoActualiza(String correo, int idProveedor);
+	@Query("SELECT e FROM Proveedor e WHERE e.telefono = ?1 AND e.idProveedor != ?2 ")
+	public List<Proveedor> listaPorTelefonoDiferenteSiMismoActualiza(String telefono, int idProveedor);
+	@Query("SELECT e FROM Proveedor e WHERE e.telefonoContacto = ?1 AND e.idProveedor <> ?2 ")
+	public List<Proveedor> listaPorTelefonoContactoDiferenteSiMismoActualiza(String telefonoContacto, int idProveedor);
+	@Query("select e from Proveedor e where e.numeroDocumento = ?1 and e.idProveedor!= ?2 ")
+	public List<Proveedor> listaPornumeroDocumentoDiferenteSiMismoActualiza(String numeroDocumento, int idProveedor);
 
-    @Query("select p from Proveedor p where p.telefono = ?1")
-    public List<Proveedor> listaPorTelefonoDiferenteSiMismo(String telefono);
-    
-    //Validaciones para Actualizar
-    @Query("select p from Proveedor p where p.correo = ?1 and p.idProveedor != ?2")
-    public List<Proveedor> listaPorCorreoDiferenteSiMismoActualiza(String correo , int idProveedor);
-    
-    @Query("select p from Proveedor p where p.nombreProveedor = ?1 and p.idProveedor != ?2")
-    public List<Proveedor> listaProveedorNombreIgualActualiza(String nombreProveedor, int idProveedor);
-
-    @Query("select p from Proveedor p where p.telefono = ?1 and p.idProveedor != ?2")
-    public List<Proveedor> listaPorTelefonoDiferenteSiMismoActualiza(String telefono , int idProveedor);
 }

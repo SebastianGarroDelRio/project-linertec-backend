@@ -34,8 +34,6 @@ public class Contrato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false, length = 10)
 	private int idContrato;
-	//private String descripcionServicio;
-	//private double costoContrato;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -60,6 +58,8 @@ public class Contrato {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrato")
 	private List<ContratoHasServicio> detallesContrato;
 	
-	
-
+	public String getReporteEstado() {
+		return estadoContrato.getIdEstadoContrato() + " - " + estadoContrato.getDescripcionEstadoContrato();
+	}
+   
 }
