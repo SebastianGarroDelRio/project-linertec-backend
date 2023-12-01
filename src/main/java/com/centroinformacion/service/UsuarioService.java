@@ -15,7 +15,7 @@ public interface UsuarioService {
 
 	public abstract List<Rol> traerRolesDeUsuario(int idUsuario);
 
-	public abstract Usuario buscaPorLogin(String login);
+	public abstract List<Usuario> buscaPorLogin(String login);
 
 	// LISTAR COMBO
 	public abstract List<Usuario> listaTodos();

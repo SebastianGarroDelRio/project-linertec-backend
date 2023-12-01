@@ -33,8 +33,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public Usuario buscaPorLogin(String login) {
-		return repository.findByLogin(login);
+	public List<Usuario> buscaPorLogin(String login) {
+		return repository.findByLoginIgnoreCase(login);
 	}
 
 	//CRUD

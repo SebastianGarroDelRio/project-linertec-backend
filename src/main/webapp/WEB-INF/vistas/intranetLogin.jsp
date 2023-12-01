@@ -34,6 +34,12 @@
                             <strong>${requestScope.mensaje}</strong>
                         </div>
         </c:if>
+        <c:if test="${requestScope.register != null}">
+            <div class="success alert-success fade in" id="success-alert">
+                <a href="#" class="close" data-dismiss="success">&times;</a>
+                <strong>${requestScope.register}</strong>
+            </div>
+        </c:if>
                 <div class="contenedor__todo">
                     <div class="caja__trasera">
                         <div class="caja__trasera-login">
@@ -65,15 +71,16 @@
                             </form>
     
                         <!--Register-->
-                        <form action="registerUser" class="formulario__register">
+                        <form action="registerUser" method="post" class="formulario__register">
+                            <div>
                             <h1>Registrarse</h1>
                             <input type="text" name="nombres" placeholder="Nombre completo">
                             <input type="text" name="apellidos" placeholder="Apellidos">
                             <input type="text" name="correo" placeholder="Correo Electronico">
-                            <input type="text" name="usuario" placeholder="Usuario">
+                            <input type="text" name="login" placeholder="Usuario">
                             <input type="password"  name="password" placeholder="Contrase&ntilde;a">
                             <button>Registrarse</button>
-                        
+                            </div>
                         </form>
                     </div>
                 </div>

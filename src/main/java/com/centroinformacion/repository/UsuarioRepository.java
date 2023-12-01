@@ -21,7 +21,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	@Query("Select r from Rol r, UsuarioHasRol u where r.idRol = u.rol.idRol and u.usuario.idUsuario = :var_idUsuario")
 	public abstract List<Rol> traerRolesDeUsuario(@Param("var_idUsuario") int idUsuario);
 
-	public abstract Usuario findByLogin(String login);
+	public abstract List<Usuario> findByLoginIgnoreCase(String login);
 
 	// FILTRAR
 	@Query("select u from Usuario u where u.nombres like ?1 ")
@@ -46,5 +46,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 	@Query("select u from Usuario u where u.correo = ?1 and u.idUsuario != ?2 ")
 	public List<Usuario> listaPorCorreoDiferenteSiMismoActualiza(String correo, int idUsuario);
+
+
 
 }
