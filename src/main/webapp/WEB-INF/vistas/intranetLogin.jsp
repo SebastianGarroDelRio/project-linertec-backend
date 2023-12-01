@@ -69,8 +69,6 @@
                             <h1>Registrarse</h1>
                             <input type="text" name="nombres" placeholder="Nombre completo">
                             <input type="text" name="apellidos" placeholder="Apellidos">
-                            <input type="text" name="dni" placeholder="DNI">
-                            <input type="text" name="direccion" placeholder="Direcci&oacute;n">
                             <input type="text" name="correo" placeholder="Correo Electronico">
                             <input type="text" name="usuario" placeholder="Usuario">
                             <input type="password"  name="password" placeholder="Contrase&ntilde;a">
