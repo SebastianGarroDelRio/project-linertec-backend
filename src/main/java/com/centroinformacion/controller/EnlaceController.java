@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
+@RequestMapping("/")
 public class EnlaceController {
 	
-	@RequestMapping("/inicio")
+	@RequestMapping("")
 	public String Inicio() {
 		return "Inicio";
 	}
