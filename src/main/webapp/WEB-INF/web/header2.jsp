@@ -48,7 +48,7 @@
 								</button>
 								<div class="collapse navbar-collapse" id="navbarsExample04">
 									<ul class="navbar-nav mr-auto">
-										<li class="nav-item active"><a class="nav-link" href="/">Inicio</a></li>
+										<li class="nav-item active"><a class="nav-link" href="/inicio">Inicio</a></li>
 									</ul>
 								</div>
 							</nav>
