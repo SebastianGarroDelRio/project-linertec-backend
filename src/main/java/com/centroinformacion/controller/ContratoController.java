@@ -1,10 +1,6 @@
 package com.centroinformacion.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +27,7 @@ import com.centroinformacion.service.ContratoService;
 import com.centroinformacion.service.ServicioService;
 import com.centroinformacion.util.FunctionUtil;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import lombok.extern.apachecommons.CommonsLog;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRLoader;
 
 @Controller
 public class ContratoController {
