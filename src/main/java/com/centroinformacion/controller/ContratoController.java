@@ -42,7 +42,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-@CommonsLog
 @Controller
 public class ContratoController {
 
@@ -160,85 +159,5 @@ public class ContratoController {
 		return objMensaje;
 	}
 
-	@GetMapping("/consultaContrato")
-	@ResponseBody
-	public List<Contrato> consultaContrato(int idEstadoContrato) {
-		List<Contrato> salida = service.listaConsultaContrato(idEstadoContrato);
-		return salida;
-	}
 	
-	@GetMapping("/reporteGeneralPdf")
-	public void reporteGeneral(HttpServletRequest rq, HttpServletResponse rs, int estado)
-	{
-		try {
-			// Obtengo el datasource que va a generar el reporte
-			List<Contrato> lstSalida = service.listaConsultaContrato(estado);
-
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
-
-			// Obtener el archivo que contiene el diseño del reporte
-			String fileDirectory = rq.getServletContext().getRealPath("/WEB-INF/reportes/reporteCategorias.jasper");
-			log.info(">> FILE >> " + fileDirectory);
-			FileInputStream stream = new FileInputStream(new File(fileDirectory));
-
-			// Parametros adicionales
-			String fileLogo = rq.getServletContext().getRealPath("/static/images/logo.png");
-			log.info(">> LOGO >> " + fileLogo);
-
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			params.put("LOGO", fileLogo);
-
-			// Enviamos dataSource, diseño y parámetros para generar el PDF
-			JasperReport jasperReport = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
-
-			// PASO 5: Enviar el PDF generado
-			rs.setContentType("application/x-pdf");
-			rs.addHeader("Content-disposition", "attachment; filename=ReporteCategoria.pdf");
-
-			OutputStream outStream = rs.getOutputStream();
-			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	//FILA X FILA
-	@GetMapping("/reporteContratoPdf")
-	public void reporteContrato(HttpServletRequest rq, HttpServletResponse rs, @RequestParam String idContrato)
-	{
-		try {
-			// Obtengo el datasource que va a generar el reporte
-			List<ContratoHasServicio> lstSalida = contratoService.listaTodos(Integer.parseInt(idContrato));
-
-			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
-
-			// Obtener el archivo que contiene el diseño del reporte
-			String fileDirectory = rq.getServletContext().getRealPath("/WEB-INF/reportes/reporteContrato.jasper");
-			log.info(">> FILE >> " + fileDirectory);
-			FileInputStream stream = new FileInputStream(new File(fileDirectory));
-
-			// Parametros adicionales
-			String fileLogo = rq.getServletContext().getRealPath("/static/images/logo.png");
-			log.info(">> LOGO >> " + fileLogo);
-			
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			params.put("LOGO", fileLogo);
-
-			// Enviamos dataSource, diseño y parámetros para generar el PDF
-			JasperReport jasperReport = (JasperReport) JRLoader.loadObject(stream);
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
-
-			// PASO 5: Enviar el PDF generado
-			rs.setContentType("application/x-pdf");
-			rs.addHeader("Content-disposition", "attachment; filename=ReporteContrato.pdf");
-
-			OutputStream outStream = rs.getOutputStream();
-			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
