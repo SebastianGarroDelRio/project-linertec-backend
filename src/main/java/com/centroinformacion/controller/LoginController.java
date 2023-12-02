@@ -65,7 +65,7 @@ public class LoginController {
         user.setFechaNacimiento(FunctionUtil.getFechaDate("2100-01-01"));
 
         List<Usuario> userExist = servicio.buscaPorLogin(user.getLogin());
-        if (userExist != null) {
+        if (!userExist.isEmpty()) {
             request.setAttribute("mensaje", "El usuario ya existe");
             return "intranetLogin";
         } else {
