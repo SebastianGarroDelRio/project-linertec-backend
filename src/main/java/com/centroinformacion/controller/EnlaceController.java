@@ -13,84 +13,84 @@ public class EnlaceController {
 	@GetMapping("")
 	@ResponseBody
 	public String Inicio() {
-		return "Inicio";
+		return "Inicio.jsp";
 	}
 	
 	@GetMapping("/nosotros")
 	@ResponseBody
 	public String Nosotros() {
-		return "Nosotros";
+		return "Nosotros.jsp";
 	}
 	
 	@GetMapping("/servicios")
 	@ResponseBody
 	public String Servicios() {
-		return "Servicios";
+		return "Servicios.jsp";
 	}
 	
 	@GetMapping("/proyectos")
 	@ResponseBody
 	public String Proyectos() {
-		return "Proyectos";
+		return "Proyectos.jsp";
 	}
 	
 	@GetMapping("/contactanos")
 	@ResponseBody
 	public String Contactanos() {
-		return "Contactanos";
+		return "Contactanos.jsp";
 	}
 	
 	
 	@GetMapping("/verLogin")
 	@ResponseBody
-	public String verLogin() {	return "intranetLogin";  }
+	public String verLogin() {	return "intranetLogin.jsp";  }
 	
 	@GetMapping("/verIntranetHome")
 	@ResponseBody
-	public String verIntranetHome() {	return "intranetHome";  }
+	public String verIntranetHome() {	return "intranetHome.jsp";  }
 	
 	@GetMapping("/verCrudCategoria")
 	@ResponseBody
-	public String verCrudCategoria() {	return "intranetCrudCategoria";	}
+	public String verCrudCategoria() {	return "intranetCrudCategoria.jsp";	}
 
 	@GetMapping("/verCrudCliente")
 	@ResponseBody
-	public String verCrudCliente() {	return "intranetCrudCliente";	}
+	public String verCrudCliente() {	return "intranetCrudCliente.jsp";	}
 
 	@GetMapping("/verCrudContrato")
 	@ResponseBody
-	public String verCrudContrato() {	return "intranetCrudContrato";	}
+	public String verCrudContrato() {	return "intranetCrudContrato.jsp";	}
 
 	@GetMapping("/verCrudDetalleServicio")
 	@ResponseBody
-	public String verCrudDetalleServicio() {	return "intranetCrudDetalleServicio";	}
+	public String verCrudDetalleServicio() {	return "intranetCrudDetalleServicio.jsp";	}
 
 	@GetMapping("/verCrudProducto")
 	@ResponseBody
-	public String verCrudProducto() {	return "intranetCrudProducto";	}
+	public String verCrudProducto() {	return "intranetCrudProducto.jsp";	}
 
 	@GetMapping("/verCrudProveedor")
 	@ResponseBody
-	public String verCrudProveedor() {	return "intranetCrudProveedor";	}
+	public String verCrudProveedor() {	return "intranetCrudProveedor.jsp";	}
 
 	@GetMapping("/verCrudServicio")
 	@ResponseBody
-	public String verCrudServicio() {	return "intranetCrudServicio";	}
+	public String verCrudServicio() {	return "intranetCrudServicio.jsp";	}
 	
 	@GetMapping("/verCrudUsuario")
 	@ResponseBody
-	public String verCrudUsuario() {	return "intranetCrudUsuario";	}
+	public String verCrudUsuario() {	return "intranetCrudUsuario.jsp";	}
 	
 	@GetMapping("/verAsignacionRol")
 	@ResponseBody
-	public String verAsignacionRol() {	return "intranetAsignacionRol";	}
+	public String verAsignacionRol() {	return "intranetAsignacionRol.jsp";	}
 	
 	@GetMapping("/verConsultaContrato")
 	@ResponseBody
-	public String verConsultaContrato() {	return "intranetConsultaContrato";	}
+	public String verConsultaContrato() {	return "intranetConsultaContrato.jsp";	}
 	
 	@GetMapping("/verConsultaServicio")
 	@ResponseBody
-	public String verConsultaServicio() {	return "intranetConsultaServicio";	}
+	public String verConsultaServicio() {	return "intranetConsultaServicio.jsp";	}
 
 }
