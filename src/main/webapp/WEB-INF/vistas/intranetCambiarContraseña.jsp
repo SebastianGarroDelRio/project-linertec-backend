@@ -46,38 +46,28 @@
             <div class="caja__trasera-login">
                 <h1>¿Ya tienes una cuenta?</h1>
                 <p>Inicia sesion para entrar en la pagina</p>
-                <button id="btn__iniciar-sesion">Iniciar Sesion</button>
+                <button id="btn__iniciar-sesion">Direcci&oacute;n de correo electr&oacute;nico</button>
             </div>
             <div class="caja__trasera-register">
-                <h1>¿No tienes una cuenta?</h1>
-                <p>Registrate para que puedas iniciar sesion</p>
-                <button id="btn__registrarse">Registrarse</button>
+                <h1>Restablecer contrase&ntilde;a</h1>
+                <p>Introduce la direcci&oacute;n de correo que<br> usaste en el registro.
+                    Te enviaremos un correo con un codigo para<br> que puedas restablecer tu contrase&ntilde;a.</p>
+                <a href="verLogin" class="btn btn-primary btn-lg">Iniciar Sesi&oacute;n </a>
             </div>
         </div>
 
         <!--Formulario de Login y registro-->
         <div class="contenedor__login-register">
             <!--Login-->
-            <form id="id_form" action="login" method="post" class="formulario__login login-form">
-                <h1>Iniciar Sesion</h1>
+            <form id="id_form" action="enviarCodigoEmail" method="post" class="formulario__login login-form">
+                <h1>Direcci&oacute;n de correo electr&oacute;nico</h1>
                 <div class="form-group">
-                    <label class="sr-only" for="form-username">Usuario</label>
-                    <input type="text" name="login" placeholder="Ingrese Usuario" class="form-username form-control"
-                           id="form-username" maxlength="20" value="luis">
+                    <label class="sr-only" for="form-username">Email</label>
+                    <input type="email" name="email" placeholder="Ingrese correo" class="form-username form-control"
+                           id="form-username" maxlength="50" value="luis">
                 </div>
-                <div class="form-group">
-                    <label class="sr-only" for="form-password">Contrase&ntilde;a</label>
-                    <div class="input-group">
-                        <input type="password" name="password" placeholder="Ingrese Contrase&ntilde;a"
-                               class="form-password form-control" id="form-password" maxlength="20" value="luis">
-                        <span class="input-group-addon togglePassword" onclick="mostrarPassword();">
-            <span class="glyphicon glyphicon-eye-open" id="id_icon_ver"></span>
-            <span class="glyphicon glyphicon-eye-close" style="display: none" id="id_icon_ocultar"></span>
-        </span>
-                    </div>
-                </div>
-                <button type="submit">Entrar</button><br><br>
-                <a href="password-reset">¿Olvidaste tu contrase&ntilde;a?</a>
+
+                <button type="submit" id="id_btn_enviar">Enviar</button>
             </form>
 
             <!--Register-->
@@ -120,6 +110,7 @@
         }
 
     }
+
 </script>
 
 <script type="text/javascript">

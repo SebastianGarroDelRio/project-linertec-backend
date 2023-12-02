@@ -36,7 +36,8 @@ public interface UsuarioService {
 	public abstract List<Usuario> listaUsuarioPorDniDiferenteSiMismo(String dni, int idUsuario);
 	public abstract List<Usuario> listaUsuarioPorLoginDiferenteSiMismo(String login, int idUsuario);
 	public abstract List<Usuario> listaUsuarioPorCorreoDiferenteSiMismo(String correo, int idUsuario);
-	
+	public abstract List<Usuario> listarPorCorreo(String correo);
+
 	
 	public abstract List<Usuario> listaUsuarioPorDniDiferenteSiMismoActualiza(String dni, int idUsuario);
 	public abstract List<Usuario> listaUsuarioPorLoginDiferenteSiMismoActualiza(String login, int idUsuario);

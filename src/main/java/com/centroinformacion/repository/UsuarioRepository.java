@@ -48,5 +48,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	public List<Usuario> listaPorCorreoDiferenteSiMismoActualiza(String correo, int idUsuario);
 
 
-
+	public abstract List<Usuario> findByCorreoIgnoreCase(String login);
 }
