@@ -160,7 +160,7 @@ public class ContratoController {
 		return objMensaje;
 	}
 
-	@GetMapping("/consultaContrato")
+	@GetMapping("")
 	@ResponseBody
 	public List<Contrato> consultaContrato(int idEstadoContrato) {
 		List<Contrato> salida = service.listaConsultaContrato(idEstadoContrato);

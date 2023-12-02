@@ -30,6 +30,8 @@
 </head>
 <body>
 	<jsp:include page="intranetCabecera.jsp" />
+
+
 	<div class="container text-center" style="margin-top: 4%">
 		<h3>CRUD DE CATEGORIA</h3>
 	</div>
@@ -48,10 +50,24 @@
 					<div class="panel-body">
 						<!-- Contenido de FILTRAR -->
 						<div class="row" style="height: 70px">
-							<div class="col-md-2">
-								<input class="form-control" id="id_txt_filtro" name="filtro"
-									placeholder="Ingrese el Categoria" type="text" maxlength="30" />
+
+
+
+							<div class="form-group col-md-3">
+								<label class="control-label" for="id_descripcion"></label> <input
+									class="form-control" type="text" id="id_descripcion"
+									name="pmDescripcion" placeholder="Ingrese una descripcion">
 							</div>
+
+							<div class="form-group col-md-3">
+								<label class="control-label" for="id_estado">Estado</label>
+								<select class="form-control" id="id_estado"
+									name="pmEstado">
+									<option value="-1">[Todos]</option>
+								</select>
+							</div>
+
+
 
 							<div class="col-md-2">
 								<button type="button" class="btn btn-primary"
@@ -77,10 +93,11 @@
 
 						</div>
 
+
 						<div class="row">
 							<div class="col-md-12">
 								<div class="content">
-									<table id="id_table" class="table table-striped table-bordered table-responsive">
+									<table id="id_table" class="table table-striped table-bordered">
 										<thead>
 											<tr>
 												<th style="width: 5%">CÓDIGO</th>
@@ -96,6 +113,8 @@
 								</div>
 							</div>
 						</div>
+
+
 					</div>
 					<hr>
 					<!-- Línea divisoria entre secciones -->
@@ -233,16 +252,25 @@
 
 	<script type="text/javascript">
 	<!-- Agregar aquí -->
-		$("#id_btn_reporte").click(
-				function() {
-					// Puedes ajustar la URL según tu configuración y mapeo de controladores en Spring Boot
-					var url = "/reporteCategoriaPdf?estado=" + estado
-							+ "&descripcionCategoria="
-							+ $("#id_txt_filtro").val();
+	function realizarConsulta() {
+	    var vEstado = $("#id_estado").val().trim();
+	    var vDescripcion = $("#id_descripcion").val().trim();
 
-					// Abre una nueva ventana o pestaña con la URL del controlador
-					window.open(url, '_blank');
-				});
+	    $.getJSON("consultaCategoria", {
+	        "idestado": vEstado,
+	        "descripcionCategoria": vDescripcion,
+	    }, function (data) {
+	        agregarGrilla(data);
+	    });
+	}
+	
+	$(document).ready(function () {
+	    realizarConsulta();
+	    $("#id_btn_filtrar").click(function () {
+	        realizarConsulta();
+	    });
+	});
+		
 
 		$.getJSON("listaEstado", {}, function(data) {
 			$.each(data, function(i, item) {
@@ -252,33 +280,25 @@
 				$("#id_act_estado").append(
 						"<option value="+item.idestado +">"
 								+ item.descripcionestado + "</option>");
+				$("#id_estado").append(
+						"<option value="+item.idestado +">"
+								+ item.descripcionestado + "</option>");
 			});
 		});
 
-		$("#id_txt_filtro").keyup(function() {
-			var fil = $(this).val(); // Obtener el valor del campo de texto
-			$.getJSON("consultaCrudCategoria", {
-				"filtro" : fil
-			}, function(lista) {
-				agregarGrilla(lista); // Agregar la lista a la grilla
-			});
-		});
-
-		$(document).ready(function() {
-			var fil = $("#id_txt_filtro").val(); // Obtener el valor inicial del campo de texto
-			$.getJSON("consultaCrudCategoria", {
-				"filtro" : fil
-			}, function(lista) {
-				agregarGrilla(lista); // Agregar la lista a la grilla
-			});
+		$("#id_btn_reporte").click(function() {
+			$("#id_form").attr('action', 'reporteCategoriaPdf');
+			$("#id_form").submit();
 		});
 
 		$("#id_btn_filtrar").click(function() {
-			var fil = $("#id_txt_filtro").val();
-			$.getJSON("consultaCrudCategoria", {
-				"filtro" : fil
-			}, function(lista) {
-				agregarGrilla(lista);
+			var vEstado = $("#id_estado").val().trim();
+			var vDescripcion = $("#id_descripcion").val().trim();
+			$.getJSON("consultaCategoria", {
+				"idestado" : vEstado,
+				"descripcionCategoria" : vDescripcion,
+			}, function(data) {
+				agregarGrilla(data);
 			});
 		});
 

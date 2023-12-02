@@ -120,12 +120,20 @@ public class CategoriaController {
 		return map;
 	}
 	
+	@GetMapping("/consultaCategoria")
+	@ResponseBody
+	public List<Categoria> consultaCategoria(String idestado, String descripcionCategoria)
+	{
+		List<Categoria> salida = service.listaConsultaCategoria("%"+descripcionCategoria+"%", Integer.parseInt(idestado));
+			return salida;
+	}
+	
 	@GetMapping("/reporteCategoriaPdf")
-	public void reporteCategoria(HttpServletRequest rq, HttpServletResponse rs, String descripcionCategoria, int estado)
+	public void reporteCategoria(HttpServletRequest rq, HttpServletResponse rs, String pmDescripcion, int pmEstado)
 	{
 		try {
 			// Obtengo el datasource que va a generar el reporte
-			List<Categoria> lstSalida = service.listaConsultaCategoria("%"+descripcionCategoria+"%", estado);
+			List<Categoria> lstSalida = service.listaConsultaCategoria("%"+pmDescripcion+"%", pmEstado);
 
 			JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lstSalida);
 
@@ -135,7 +143,7 @@ public class CategoriaController {
 			FileInputStream stream = new FileInputStream(new File(fileDirectory));
 
 			// Parametros adicionales
-			String fileLogo = rq.getServletContext().getRealPath("/static/images/logo.png");
+			String fileLogo = rq.getServletContext().getRealPath("/WEB-INF/img/Logo.jpg");
 			log.info(">> LOGO >> " + fileLogo);
 
 			HashMap<String, Object> params = new HashMap<String, Object>();
