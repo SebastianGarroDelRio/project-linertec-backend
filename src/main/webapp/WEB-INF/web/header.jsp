@@ -69,13 +69,13 @@
 
 								<div class="collapse navbar-collapse" id="navbarsExample04">
 									<ul class="navbar-nav mr-auto">
-										<li class="nav-item active"><a class="nav-link" href="Inicio">
+										<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/inicio">
 												Inicio </a></li>
-										<li class="nav-item"><a class="nav-link" href="Nosotros">Nosotros</a>
+										<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/nosotros">Nosotros</a>
 										</li>
-										<li class="nav-item"><a class="nav-link" href="Servicios">Servicios</a>
+										<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/servicios">Servicios</a>
 										</li>
-										<li class="nav-item"><a class="nav-link" href="Proyectos">Proyectos</a>
+										<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/proyectos">Proyectos</a>
 										</li>
 									</ul>
 								</div>
@@ -89,7 +89,7 @@
 							<ul class="sign">
 								<li><a href="#"><i class="fa fa-search"
 										aria-hidden="true"></i></a></li>
-								<li><a class="sign_btn" href="verLogin" target="_blank">Iniciar Sesion</a></li>
+								<li><a class="sign_btn" href="${pageContext.request.contextPath}/verLogin" target="_blank">Iniciar Sesion</a></li>
 								<!-- Reemplaza tu botón existente con este para abrir el modal -->
 							</ul>
 						</div>

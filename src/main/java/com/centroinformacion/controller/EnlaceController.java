@@ -7,27 +7,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class EnlaceController {
 	
-	@GetMapping("Inicio")
+	@GetMapping("/inicio")
 	public String Inicio() {
 		return "Inicio";
 	}
 	
-	@GetMapping("/Nosotros")
+	@GetMapping("/nosotros")
 	public String Nosotros() {
 		return "Nosotros";
 	}
 	
-	@GetMapping("/Servicios")
+	@GetMapping("/servicios")
 	public String Servicios() {
 		return "Servicios";
 	}
 	
-	@GetMapping("/Proyectos")
+	@GetMapping("/proyectos")
 	public String Proyectos() {
 		return "Proyectos";
 	}
 	
-	@GetMapping("/Contactanos")
+	@GetMapping("/contactanos")
 	public String Contactanos() {
 		return "Contactanos";
 	}
