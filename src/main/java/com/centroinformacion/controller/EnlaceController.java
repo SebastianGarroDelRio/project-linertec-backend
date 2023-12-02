@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class EnlaceController {
 	
-	@GetMapping("/Inicio")
+	@GetMapping("/inicio")
 	public String Inicio() {
 		return "Inicio";
 	}
