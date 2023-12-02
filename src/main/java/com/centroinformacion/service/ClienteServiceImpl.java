@@ -42,7 +42,6 @@ public class ClienteServiceImpl implements ClienteService {
 		return repository.listaClienteNombreLike(filtro);
 	}
 
-	
 	// INICIO VALIDACION REGISTRAR
 
 	@Override
@@ -50,17 +49,10 @@ public class ClienteServiceImpl implements ClienteService {
 		return repository.listaPorTelefonoDiferenteSiMismo(telefono, idCliente);
 	}
 
-	
 	//TRANSACCION
 	@Override
 	public List<Cliente> listaCliente(String filtro, Pageable pageable) {
 		return repository.listaCliente(filtro, pageable);
 	}
-
-	@Override
-	public List<Cliente> listaCliente() {
-		return repository.listaCliente();
-	}
-
 
 }

@@ -61,5 +61,4 @@ public class Cliente {
 	@JoinColumn(name = "idestado")
 	private Estado estado;
 	
-	
 }

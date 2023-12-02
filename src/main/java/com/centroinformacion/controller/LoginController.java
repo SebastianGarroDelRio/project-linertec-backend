@@ -3,8 +3,6 @@ package com.centroinformacion.controller;
 import java.util.Date;
 import java.util.List;
 
-import com.centroinformacion.util.FunctionUtil;
-import net.sf.jasperreports.functions.FunctionsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +12,7 @@ import com.centroinformacion.entity.Opcion;
 import com.centroinformacion.entity.Rol;
 import com.centroinformacion.entity.Usuario;
 import com.centroinformacion.service.UsuarioService;
+import com.centroinformacion.util.FunctionUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -38,7 +38,7 @@ public class CategoriaController {
 
 	@Autowired
 	private CategoriaService service;
-
+	
 	@GetMapping("/consultaCrudCategoria")
 	@ResponseBody
 	public List<Categoria> lista(String filtro) {
@@ -80,12 +80,7 @@ public class CategoriaController {
 	@ResponseBody
 	public Map<?, ?> actualiza(Categoria obj, HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-
-		Estado activo = new Estado();
-		activo.setIdestado(2);
-		activo.setDescripcionestado("");
-		obj.setEstado(activo);
-
+		
 		List<Categoria> lstDescripcion = service
 				.listaCategoriaPorDescripcionDiferenteSiMismo(obj.getDescripcionCategoria(), obj.getIdCategoria());
 		if (!CollectionUtils.isEmpty(lstDescripcion)) {

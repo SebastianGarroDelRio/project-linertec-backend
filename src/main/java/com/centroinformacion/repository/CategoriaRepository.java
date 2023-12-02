@@ -19,7 +19,7 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
 	public List<Categoria> listaPorDescripcionDiferenteSiMismoActualiza(String descripcionCategoria, int idCategoria);
 
 	@Query("select c from Categoria c where "
-			+ "( c.descripcionCategoria = ?1 )and "
+			+ "( c.descripcionCategoria = ?1 ) and "
 			+ "( ?2 = -1 or c.estado.idestado = ?2 )")
 	public List<Categoria> listaConsultaCategoriaComplejo(String descripcionCategoria, int idestado);
 	

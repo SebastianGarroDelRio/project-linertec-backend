@@ -30,13 +30,12 @@ public class ContratoServiceImpl implements ContratoService{
 	@Override
 	@Transactional
 	public Contrato insertaActualizaContrato(Contrato obj) {
-		Contrato cabecera = repository.save(obj);
-		for (ContratoHasServicio d : cabecera.getDetallesContrato()) {
-			d.getContratoHasServicioPK().setIdContrato(cabecera.getIdContrato());
-			//detalleRepository.actualizaStock(d.getCantidad(), d.getProductoHasBoletaPK().getIdProducto());
-			detalleRepository.save(d);
+		Contrato objCabecera = repository.save(obj);
+		for (ContratoHasServicio detalle : obj.getDetallesContrato()) {
+			detalle.getContratoHasServicioPK().setIdContrato(objCabecera.getIdContrato());
+			detalleRepository.save(detalle);
 		}
-		return cabecera;
+		return objCabecera;
 	}
 
 	@Override

@@ -44,12 +44,12 @@
     <div class="contenedor__todo">
         <div class="caja__trasera">
             <div class="caja__trasera-login">
-                <h1>Â¿Ya tienes una cuenta?</h1>
+                <h1>¿Ya tienes una cuenta?</h1>
                 <p>Inicia sesion para entrar en la pagina</p>
                 <button id="btn__iniciar-sesion">Iniciar Sesion</button>
             </div>
             <div class="caja__trasera-register">
-                <h1>Â¿No tienes una cuenta?</h1>
+                <h1>¿No tienes una cuenta?</h1>
                 <p>Registrate para que puedas iniciar sesion</p>
                 <button id="btn__registrarse">Registrarse</button>
             </div>
@@ -66,7 +66,7 @@
                            id="form-username" maxlength="20" value="luis">
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="form-password">Contrase&ntilde;a</label>
+                    <label class="sr-only" for="form-password">Contraseña</label>
                     <div class="input-group">
                         <input type="password" name="password" placeholder="Ingrese Contrase&ntilde;a"
                                class="form-password form-control" id="form-password" maxlength="20" value="luis">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <button type="submit">Entrar</button><br><br>
-                <a href="password-reset">Â¿Olvidaste tu contrase&ntilde;a?</a>
+                <a href="password-reset">¿Olvidaste tu contraseña?</a>
             </form>
 
             <!--Register-->
@@ -147,7 +147,7 @@
                 password: {
                     validators: {
                         notEmpty: {
-                            message: 'Ingresar su constraseï¿½a'
+                            message: 'Ingresar su constraseña'
                         },
                         stringLength: {
                             message: 'La contraseï¿½a es de 3 a 20 caracteres',

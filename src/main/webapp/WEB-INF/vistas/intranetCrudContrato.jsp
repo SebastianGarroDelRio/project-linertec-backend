@@ -23,16 +23,14 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css" />
 
 
-
 <title>Contrato</title>
 </head>
 <body>
 	<jsp:include page="intranetCabecera.jsp" />
 
 	<div class="container" style="margin-top: 4%">
+		<form id="id_form" action="" class="form-horizontal" method="post">
 
-		<form id="id_form" accept-charset="UTF-8" action="contrato"
-			class="form-horizontal" method="post">
 			<div class="panel-group" id="steps">
 
 				<!-- INICIO CARTA DE CLIENTE -->
@@ -126,32 +124,26 @@
 								onkeypress="return validarSoloNumerosEnteros(event);" />
 						</div>
 
-						<div class="form-group  col-md-3" style="margin-left: 10px;">
-							<label class="control-label">Fecha Inicio</label>
-							<input
-								type="date" name="fechainicio" id="id_servicio_fecinicio"
-								class="form-control"  />
-						</div>
-
-						<div class="form-group  col-md-3" style="margin-left: 10px;">
-							<label class="control-label">Fecha Fin</label>
-							<input type="date"
-								name="fechafin" id="id_servicio_fecfin" class="form-control"/>
-						</div>
-
-						<div class="form-group  col-md-3" style="margin-left: 10px;">
-							<label class="col-lg-3 control-label" for="id_estado">Estado</label>
-							<div class="col-lg-12">
-								<select id="id_estado" name="estado" class='form-control'>
-									<option value=" ">[Seleccione]</option>
-								</select>
-							</div>
-						</div>
-
 					</div>
 				</div>
 				<!-- FIN CARTA DE SERVICIO -->
 
+				<!-- INICIO CARTA DE SERVICIO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
+							<label class="control-label">Fecha Inicio</label> <input
+								type="date" name="fechaInicio" id="id_servicio_fecinicio"
+								class="form-control" />
+						</div>
+
+						<div class="form-group  col-md-3" style="margin-left: 10px;">
+							<label class="control-label">Fecha Fin</label> <input type="date"
+								name="fechaFin" id="id_servicio_fecfin" class="form-control" />
+						</div>
+						
+					</div>
+				</div>
 				<!-- INICIO CARTA DE DETALLE -->
 				<div class="panel panel-default">
 					<div class="panel-heading">Detalle de Contrato</div>
@@ -175,9 +167,6 @@
 											<th style="width: 20%">NOMBRE</th>
 											<th style="width: 10%">COSTO</th>
 											<th style="width: 10%">IMPUESTO</th>
-											<th style="width: 15%">FECHA INICIO</th>
-											<th style="width: 15%">FECHA FIN</th>
-											<th style="width: 10%">ESTADO</th>
 											<th style="width: 10%">SUBTOTAL</th>
 											<th style="width: 5%">ELIMINAR</th>
 										</tr>
@@ -314,14 +303,16 @@
 
 
 	<script type="text/javascript">
-	$.getJSON("listaEstadoContrato", {}, function(data) {
-		$.each(data, function(i, item) {
-			$("#id_estado").append(
-					"<option value="+item.idEstadoContrato +">"
-							+ item.descripcionEstadoContrato + "</option>");
+		$.getJSON("listaEstadoContrato", {}, function(data) {
+			$.each(data,
+					function(i, item) {
+						$("#id_estado").append(
+								"<option value="+item.idEstadoContrato +">"
+										+ item.descripcionEstadoContrato
+										+ "</option>");
+					});
 		});
-	});
-	
+
 		$(document)
 				.ready(
 						function() {
@@ -347,12 +338,6 @@
 																							+ item.costoServicio
 																							+ "</td><td>"
 																							+ item.impuesto
-																							+ "</td><td>"
-																							+ item.fechainicio
-																							+ "</td><td>"
-																							+ item.fechafin
-																							+ "</td><td>"
-																							+ item.estado
 																							+ "</td><td>"
 																							+ item.totalParcial
 																							+ "</td><td><button type='button' onclick='f_elimina_seleccion("
@@ -525,9 +510,6 @@
 						function() {
 							var var_ser = $("#id_servicio_id").val();
 							var var_imp = $("#id_servicio_impuesto").val();
-							var var_feci = $("#id_servicio_fecinicio").val();
-							var var_fecf = $("#id_servicio_fecfin").val();
-							var var_estc = $("#id_estado").val();
 
 							//Validar duplicados
 							var yaExiste = false;
@@ -573,13 +555,10 @@
 									"descripcionServicio" : var_des,
 									"costoServicio" : var_cos,
 									"impuesto" : var_imp,
-									"fechainicio" : var_feci,
-									"fechafin" : var_fecf,
-									"estado" : var_estc
 								};
 
 								$
-										.ajax({	
+										.ajax({
 											url : 'agregarSeleccion',
 											type : 'POST',
 											dataType : 'json',
@@ -605,12 +584,6 @@
 																								+ "</td><td>"
 																								+ item.impuesto
 																								+ "</td><td>"
-																								+ item.fechainicio
-																								+ "</td><td>"
-																								+ item.fechafin
-																								+ "</td><td>"
-																								+ item.estado
-																								+ "</td><td>"
 																								+ item.totalParcial
 																								+ "</td><td><button type='button' onclick='f_elimina_seleccion("
 																								+ item.idServicio
@@ -630,10 +603,11 @@
 										});
 								//limpia las cajas de texto
 								$("#id_servicio_id").val("-1");
+								$("#id_servicio_descripcion").val("");
+								$("#id_servicio_costo").val("");
+								$("#id_servicio_tipo").val("");
+								$("#id_servicio_estado").val("");
 								$("#id_servicio_impuesto").val("");
-								$("#id_servicio_fecinicio").val("");
-								$("#id_servicio_fecfin").val("");
-								$("#id_estado").val(" ");
 							}
 						});
 
@@ -647,6 +621,8 @@
 			var var_ndc = $("#id_cliente_numdocumento").val();
 			var var_est = $("#id_cliente_estado").val();
 
+			var vFechaFin = $("#id_servicio_fecfin").val();
+			var vFechaInicio = $("#id_servicio_fecinicio").val();
 			var var_count = 0;
 			$("#id_table_contrato_body tr").each(function() {
 				var_count = var_count + 1;
@@ -660,7 +636,10 @@
 				$("#idMensaje").modal("show");
 			} else {
 				var jsonParam = {
-					"idCliente" : var_cli
+					"idCliente" : var_cli,
+					"nombreCliente" : var_nom,
+					"fechaInicio" : vFechaInicio,
+					"fechaFin" : vFechaFin,
 				};
 				$.ajax({
 					url : 'registraContrato',
@@ -719,11 +698,9 @@
 																			+ "</td><td>"
 																			+ item.impuesto
 																			+ "</td><td>"
-																			+ item.fechainicio
+																			+ item.fechaInicio
 																			+ "</td><td>"
-																			+ item.fechafin
-																			+ "</td><td>"
-																			+ item.estado
+																			+ item.fechaFin
 																			+ "</td><td>"
 																			+ item.totalParcial
 																			+ "</td><td><button type='button' onclick='f_elimina_seleccion("
@@ -734,10 +711,13 @@
 
 			//limpia las cajas de texto
 			$("#id_servicio_id").val("-1");
+			$("#id_servicio_descripcion").val("");
+			$("#id_servicio_costo").val("");
+			$("#id_servicio_tipo").val("");
+			$("#id_servicio_estado").val("");
 			$("#id_servicio_impuesto").val("");
-			$("#id_servicio_fecinicio").val("");
-			$("#id_servicio_fecfin").val("");
-			$("#id_estado").val(" ");
+			$("#id_servicio_fecinicio").val(" ");
+			$("#id_servicio_fecfin").val(" ");
 		}
 	</script>
 </body>

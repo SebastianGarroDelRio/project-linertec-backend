@@ -26,5 +26,14 @@ public class ContratoHasServicio {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "idServicio", nullable = false, insertable = false, updatable = false)
 	private Servicio servicio;
+	
+	
+	public String getReporteContrato() {
+		return contrato.getIdContrato() + " - " + contrato.getDetallesContrato();
+	}
+	
+	public String getReporteServicio() {
+		return servicio.getIdServicio() + " - " + servicio.getDescripcionServicio();
+	}
 
 }

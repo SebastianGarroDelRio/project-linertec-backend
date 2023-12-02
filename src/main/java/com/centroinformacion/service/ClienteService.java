@@ -23,16 +23,11 @@ public interface ClienteService {
 	// LISTA POR UN ID
 	public abstract Optional<Cliente> listaClientePorId(int idCliente);
 
-	
-	
 	// VALIDACIONES REGISTRAR
 
 	public abstract List<Cliente> listaClientePorTelefonoDiferenteSiMismo(String telefono, int idCliente);
 
-	
-
 	// TRANSACCION
 	public abstract List<Cliente> listaCliente (String filtro, Pageable pageable);
-	public abstract List<Cliente> listaCliente ();
 	
 }

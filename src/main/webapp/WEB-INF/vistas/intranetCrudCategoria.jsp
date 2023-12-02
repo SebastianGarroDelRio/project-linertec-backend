@@ -74,19 +74,13 @@
 									<span class="mdi mdi-download" style="font-size: 15px">PDF</span>
 								</button>
 							</div>
-							<div class="col-md-2">
-								<button type="button" class="btn btn-success"
-									id="id_btn_reporte_excel" style="width: 150px">
-									<span class="mdi mdi-download" style="font-size: 15px">EXCEL</span>
-								</button>
-							</div>
 
 						</div>
 
 						<div class="row">
 							<div class="col-md-12">
 								<div class="content">
-									<table id="id_table" class="table table-striped table-bordered">
+									<table id="id_table" class="table table-striped table-bordered table-responsive">
 										<thead>
 											<tr>
 												<th style="width: 5%">CÓDIGO</th>

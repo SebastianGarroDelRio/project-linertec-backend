@@ -57,6 +57,13 @@
 									data-target="#id_div_modal_registra" class='btn btn-success'
 									style="width: 150px">REGISTRAR</button>
 							</div>
+							
+							<div class="col-md-2">
+								<button type="button" class="btn btn-danger" id="id_btn_reporte"
+									style="width: 150px">
+									<span class="mdi mdi-download" style="font-size: 15px">PDF</span>
+								</button>
+							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">

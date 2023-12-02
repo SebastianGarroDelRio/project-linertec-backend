@@ -43,7 +43,7 @@ public class ServicioServiceImpl implements ServicioService{
 
 	@Override
 	public List<Servicio> listaservicio(String filtro, Pageable pageable) {
-		return repository.listaservicio(filtro, pageable);
+		return repository.listaServicio(filtro, pageable);
 	}
 
 
