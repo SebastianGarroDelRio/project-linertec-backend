@@ -54,7 +54,7 @@
 
 
 							<div class="form-group col-md-3">
-								<label class="control-label" for="id_descripcion"></label> <input
+								<label class="control-label" for="id_descripcion">Filtro</label> <input
 									class="form-control" type="text" id="id_descripcion"
 									name="pmDescripcion" placeholder="Ingrese una descripcion">
 							</div>
