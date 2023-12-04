@@ -1,6 +1,7 @@
 package com.centroinformacion.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EnlaceController {
 	
 	@RequestMapping("/Inicio")
-	public String Inicio() {
+	public String Inicio(Model model) {
 		return "Inicio";
 	}
 	
