@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <%@ include file="/WEB-INF/web/header.jsp"%>
 <!-- banner -->
 <section class="banner_main">
@@ -9,8 +12,8 @@
 						SISTEMA DE <br>REVESTIMIENTO INTERNO DE 
 					</h1>
 					<span>HDPE LINER</span>
-					<p>para tubería de acero carbono, con la finalidad de mitigar la corrosión o abrasión del fluido a transportar. </p>
-					<a href="#">Ver más</a>
+					<p>para tuberÃ­a de acero carbono, con la finalidad de mitigar la corrosiÃ³n o abrasiÃ³n del fluido a transportar. </p>
+					<a href="#">Ver mÃ¡s</a>
 				</div>
 			</div>
 			<div class="col-md-5 col-lg-5">
@@ -35,7 +38,7 @@
 							<strong class="yellow">NOSOTROS</strong><br>SOMOS LINERTEC 
 						</h2>
 					</div>
-					<h3>CONTAMOS CON MÁS DE 20 AÑOS DE EXPERIENCIA</h3>
+					<h3>CONTAMOS CON MÃS DE 20 AÃ‘OS DE EXPERIENCIA</h3>
 					<span>HELP YOUR NEXT CAREER MOVE MORE SMOOTHER AND <br>
 						MORE EFFICIENT
 					</span>
@@ -114,7 +117,7 @@
 				</div>
 			</div>
 			<div class="col-md-12">
-				<a class="read_more" href="#">Leer más</a>
+				<a class="read_more" href="#">Leer mÃ¡s</a>
 			</div>
 		</div>
 	</div>
@@ -155,7 +158,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto1.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -163,7 +166,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto2.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -171,7 +174,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto3.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -179,7 +182,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto4.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -195,7 +198,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto2.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -203,7 +206,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto4.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -211,7 +214,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto1.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -219,7 +222,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto3.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -235,7 +238,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto3.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -243,7 +246,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto1.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -251,7 +254,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto2.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
@@ -259,7 +262,7 @@
 								<div class="portfolio_img">
 									<img src="img/foto4.png" alt="#" />
 									<div class="middle">
-										<div class="text2">Ver más</div>
+										<div class="text2">Ver mÃ¡s</div>
 									</div>
 								</div>
 							</div>
