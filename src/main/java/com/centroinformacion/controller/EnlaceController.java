@@ -9,16 +9,16 @@ public class EnlaceController {
 	
 	@GetMapping("/")
     public String defaultMapping() {
-        return "redirect:/intranetLogin";
+        return "redirect:/verLogin";
     }
 
 	@GetMapping("/verLogin")
-	public String verLogin(Model model) {
+	public String verLogin() {
 		return "intranetLogin";
 	}
 
 	@GetMapping("/verIntranetHome")
-	public String verIntranetHome(Model model) {
+	public String verIntranetHome() {
 		return "intranetHome";
 	}
 
