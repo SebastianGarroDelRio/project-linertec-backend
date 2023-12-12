@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class EnlaceController {
 	
+	@GetMapping("/")
+    public String redirectToLogin() {
+        return "redirect:/verLogin";
+    }
+	
 	@GetMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
