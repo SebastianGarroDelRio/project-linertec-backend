@@ -9,28 +9,8 @@ public class EnlaceController {
 	
 	@GetMapping("/")
     public String defaultMapping() {
-        return "redirect:/Inicio";
+        return "redirect:/intranetLogin";
     }
-
-	@GetMapping("/Inicio")
-	public String Inicio(Model model) {
-		return "Inicio";
-	}
-	
-	@GetMapping("/Nosotros")
-	public String Nosotros(Model model) {
-		return "Nosotros";
-	}
-
-	@GetMapping("/Servicios")
-	public String Servicios(Model model) {
-		return "Servicios";
-	}
-
-	@GetMapping("/Proyectos")
-	public String Proyectos(Model model) {
-		return "Proyectos";
-	}
 
 	@GetMapping("/verLogin")
 	public String verLogin(Model model) {
