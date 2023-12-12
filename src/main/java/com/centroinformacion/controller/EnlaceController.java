@@ -1,72 +1,72 @@
 package com.centroinformacion.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class EnlaceController {
 	
-	@RequestMapping("/verLogin")
+	@GetMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
 	}
 
-	@RequestMapping("/verIntranetHome")
+	@GetMapping("/verIntranetHome")
 	public String verIntranetHome() {
 		return "intranetHome";
 	}
 
-	@RequestMapping("/verCrudCategoria")
+	@GetMapping("/verCrudCategoria")
 	public String verCrudCategoria() {
 		return "intranetCrudCategoria";
 	}
 
-	@RequestMapping("/verCrudCliente")
+	@GetMapping("/verCrudCliente")
 	public String verCrudCliente() {
 		return "intranetCrudCliente";
 	}
 
-	@RequestMapping("/verCrudContrato")
+	@GetMapping("/verCrudContrato")
 	public String verCrudContrato() {
 		return "intranetCrudContrato";
 	}
 
-	@RequestMapping("/verCrudDetalleServicio")
+	@GetMapping("/verCrudDetalleServicio")
 	public String verCrudDetalleServicio() {
 		return "intranetCrudDetalleServicio";
 	}
 
-	@RequestMapping("/verCrudProducto")
+	@GetMapping("/verCrudProducto")
 	public String verCrudProducto() {
 		return "intranetCrudProducto";
 	}
 
-	@RequestMapping("/verCrudProveedor")
+	@GetMapping("/verCrudProveedor")
 	public String verCrudProveedor() {
 		return "intranetCrudProveedor";
 	}
 
-	@RequestMapping("/verCrudServicio")
+	@GetMapping("/verCrudServicio")
 	public String verCrudServicio() {
 		return "intranetCrudServicio";
 	}
 
-	@RequestMapping("/verCrudUsuario")
+	@GetMapping("/verCrudUsuario")
 	public String verCrudUsuario() {
 		return "intranetCrudUsuario";
 	}
 
-	@RequestMapping("/verAsignacionRol")
+	@GetMapping("/verAsignacionRol")
 	public String verAsignacionRol() {
 		return "intranetAsignacionRol";
 	}
 
-	@RequestMapping("/verConsultaContrato")
+	@GetMapping("/verConsultaContrato")
 	public String verConsultaContrato() {
 		return "intranetConsultaContrato";
 	}
 
-	@RequestMapping("/verConsultaServicio")
+	@GetMapping("/verConsultaServicio")
 	public String verConsultaServicio() {
 		return "intranetConsultaServicio";
 	}
