@@ -3,21 +3,22 @@ package com.centroinformacion.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class EnlaceController {
 	
-	@GetMapping("/")
+	@RequestMapping("/")
     public String defaultMapping() {
         return "redirect:/verLogin";
     }
 
-	@GetMapping("/verLogin")
+	@RequestMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
 	}
 
-	@GetMapping("/verIntranetHome")
+	@RequestMapping("/verIntranetHome")
 	public String verIntranetHome() {
 		return "intranetHome";
 	}
