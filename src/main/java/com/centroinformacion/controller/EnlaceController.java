@@ -8,7 +8,7 @@ public class EnlaceController {
 	
 	@GetMapping("/")
     public String redirectToLogin() {
-        return "redirect:/verLogin";
+        return "redirect:verLogin";
     }
 	
 	@GetMapping("/verLogin")
