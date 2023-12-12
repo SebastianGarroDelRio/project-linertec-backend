@@ -29,22 +29,13 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
 	media="screen">
-	
+
 <link rel="icon" href="img/icon.png" type="image/x-icon" />
 
 <title>Linertec</title>
 </head>
 <body>
 
-	<!-- loader 
-	<div class="loader_bg">
-		<div class="loader">
-			<img src="images/loading.gif" alt="#" />
-		</div>
-	</div>--> 
-	
-	
-	
 	<!-- end loader -->
 	<!-- header -->
 	<header>
@@ -69,13 +60,17 @@
 
 								<div class="collapse navbar-collapse" id="navbarsExample04">
 									<ul class="navbar-nav mr-auto">
-										<li class="nav-item active"><a class="nav-link" href="/">
-												Inicio </a></li>
-										<li class="nav-item"><a class="nav-link" href="/nosotros">Nosotros</a>
+										<li class="nav-item active">
+											<a class="nav-link" href="Inicio">Inicio</a>
 										</li>
-										<li class="nav-item"><a class="nav-link" href="/servicios">Servicios</a>
+										<li class="nav-item">
+											<a class="nav-link" href="Nosotros">Nosotros</a>
 										</li>
-										<li class="nav-item"><a class="nav-link" href="/proyectos">Proyectos</a>
+										<li class="nav-item">
+											<a class="nav-link" href="Servicios">Servicios</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="Proyectos">Proyectos</a>
 										</li>
 									</ul>
 								</div>
@@ -89,7 +84,8 @@
 							<ul class="sign">
 								<li><a href="#"><i class="fa fa-search"
 										aria-hidden="true"></i></a></li>
-								<li><a class="sign_btn" href="/verLogin" target="_blank">Iniciar Sesion</a></li>
+								<li><a class="sign_btn" href="intranetLogin">Iniciar
+										Sesion</a></li>
 								<!-- Reemplaza tu botón existente con este para abrir el modal -->
 							</ul>
 						</div>

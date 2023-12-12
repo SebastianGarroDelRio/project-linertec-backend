@@ -118,7 +118,6 @@
             ver.style.display = 'block';
             ocultar.style.display = 'none';
         }
-
     }
 </script>
 

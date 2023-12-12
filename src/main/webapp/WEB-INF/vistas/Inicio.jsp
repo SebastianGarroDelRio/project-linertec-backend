@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
-<%@ include file="/WEB-INF/web/header.jsp"%>
+<%@ include file="/WEB-INF/vistas/header.jsp"%>
 <!-- banner -->
 <section class="banner_main">
 	<div class="container">
@@ -284,11 +284,11 @@
 
 
 
-<%@ include file="/WEB-INF/web/chatbot.jsp" %>
+<%@ include file="/WEB-INF/vistas/chatbot.jsp" %>
 
 
 <!-- end portfolio section -->
-<%@ include file="/WEB-INF/web/footer.jsp"%>
+<%@ include file="/WEB-INF/vistas/footer.jsp"%>
 
 
 

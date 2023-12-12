@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/web/header.jsp" %>
+<%@ include file="/WEB-INF/vistas/header.jsp" %>
 <!-- about section -->
 <div id="about" class="about">
 	<div class="container-fluid">
@@ -96,4 +96,4 @@
 </div>
 
 <!-- service section -->
-<%@ include file="/WEB-INF/web/footer.jsp" %>
+<%@ include file="/WEB-INF/vistas/footer.jsp" %>

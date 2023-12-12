@@ -3,75 +3,98 @@ package com.centroinformacion.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 public class EnlaceController {
 	
-	@RequestMapping("/Inicio")
+	@GetMapping("/")
+    public String defaultMapping() {
+        return "redirect:/Inicio";
+    }
+
+	@GetMapping("/Inicio")
 	public String Inicio(Model model) {
 		return "Inicio";
 	}
 	
-	@GetMapping("/nosotros")
-	public String Nosotros() {
+	@GetMapping("/Nosotros")
+	public String Nosotros(Model model) {
 		return "Nosotros";
 	}
-	
-	@GetMapping("/servicios")
-	public String Servicios() {
+
+	@GetMapping("/Servicios")
+	public String Servicios(Model model) {
 		return "Servicios";
 	}
-	
-	@GetMapping("/proyectos")
-	public String Proyectos() {
+
+	@GetMapping("/Proyectos")
+	public String Proyectos(Model model) {
 		return "Proyectos";
 	}
-	
-	@GetMapping("/contactanos")
-	public String Contactanos() {
-		return "Contactanos";
-	}
-	
-	
+
 	@GetMapping("/verLogin")
-	public String verLogin() {	return "intranetLogin";  }
-	
+	public String verLogin(Model model) {
+		return "intranetLogin";
+	}
+
 	@GetMapping("/verIntranetHome")
-	public String verIntranetHome() {	return "intranetHome";  }
-	
+	public String verIntranetHome(Model model) {
+		return "intranetHome";
+	}
+
 	@GetMapping("/verCrudCategoria")
-	public String verCrudCategoria() {	return "intranetCrudCategoria";	}
+	public String verCrudCategoria(Model model) {
+		return "intranetCrudCategoria";
+	}
 
 	@GetMapping("/verCrudCliente")
-	public String verCrudCliente() {	return "intranetCrudCliente";	}
+	public String verCrudCliente(Model model) {
+		return "intranetCrudCliente";
+	}
 
 	@GetMapping("/verCrudContrato")
-	public String verCrudContrato() {	return "intranetCrudContrato";	}
+	public String verCrudContrato(Model model) {
+		return "intranetCrudContrato";
+	}
 
 	@GetMapping("/verCrudDetalleServicio")
-	public String verCrudDetalleServicio() {	return "intranetCrudDetalleServicio";	}
+	public String verCrudDetalleServicio(Model model) {
+		return "intranetCrudDetalleServicio";
+	}
 
 	@GetMapping("/verCrudProducto")
-	public String verCrudProducto() {	return "intranetCrudProducto";	}
+	public String verCrudProducto(Model model) {
+		return "intranetCrudProducto";
+	}
 
 	@GetMapping("/verCrudProveedor")
-	public String verCrudProveedor() {	return "intranetCrudProveedor";	}
+	public String verCrudProveedor(Model model) {
+		return "intranetCrudProveedor";
+	}
 
 	@GetMapping("/verCrudServicio")
-	public String verCrudServicio() {	return "intranetCrudServicio";	}
-	
+	public String verCrudServicio(Model model) {
+		return "intranetCrudServicio";
+	}
+
 	@GetMapping("/verCrudUsuario")
-	public String verCrudUsuario() {	return "intranetCrudUsuario";	}
-	
+	public String verCrudUsuario(Model model) {
+		return "intranetCrudUsuario";
+	}
+
 	@GetMapping("/verAsignacionRol")
-	public String verAsignacionRol() {	return "intranetAsignacionRol";	}
-	
+	public String verAsignacionRol(Model model) {
+		return "intranetAsignacionRol";
+	}
+
 	@GetMapping("/verConsultaContrato")
-	public String verConsultaContrato() {	return "intranetConsultaContrato";	}
-	
+	public String verConsultaContrato(Model model) {
+		return "intranetConsultaContrato";
+	}
+
 	@GetMapping("/verConsultaServicio")
-	public String verConsultaServicio() {	return "intranetConsultaServicio";	}
+	public String verConsultaServicio(Model model) {
+		return "intranetConsultaServicio";
+	}
 
 }

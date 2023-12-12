@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/web/header.jsp" %>
+<%@ include file="/WEB-INF/vistas/header.jsp" %>
 <!-- portfolio -->
 <div class="portfolio">
 	<div class="container">
@@ -156,4 +156,4 @@
 	</div>
 </div>
 <!-- fin portfolio -->
-<%@ include file="/WEB-INF/web/footer.jsp" %>
+<%@ include file="/WEB-INF/vistas/footer.jsp" %>
