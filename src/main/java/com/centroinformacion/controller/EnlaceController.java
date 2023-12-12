@@ -1,18 +1,11 @@
 package com.centroinformacion.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class EnlaceController {
 	
-	@RequestMapping("/")
-    public String defaultMapping() {
-        return "redirect:/verLogin";
-    }
-
 	@RequestMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
@@ -23,58 +16,58 @@ public class EnlaceController {
 		return "intranetHome";
 	}
 
-	@GetMapping("/verCrudCategoria")
-	public String verCrudCategoria(Model model) {
+	@RequestMapping("/verCrudCategoria")
+	public String verCrudCategoria() {
 		return "intranetCrudCategoria";
 	}
 
-	@GetMapping("/verCrudCliente")
-	public String verCrudCliente(Model model) {
+	@RequestMapping("/verCrudCliente")
+	public String verCrudCliente() {
 		return "intranetCrudCliente";
 	}
 
-	@GetMapping("/verCrudContrato")
-	public String verCrudContrato(Model model) {
+	@RequestMapping("/verCrudContrato")
+	public String verCrudContrato() {
 		return "intranetCrudContrato";
 	}
 
-	@GetMapping("/verCrudDetalleServicio")
-	public String verCrudDetalleServicio(Model model) {
+	@RequestMapping("/verCrudDetalleServicio")
+	public String verCrudDetalleServicio() {
 		return "intranetCrudDetalleServicio";
 	}
 
-	@GetMapping("/verCrudProducto")
-	public String verCrudProducto(Model model) {
+	@RequestMapping("/verCrudProducto")
+	public String verCrudProducto() {
 		return "intranetCrudProducto";
 	}
 
-	@GetMapping("/verCrudProveedor")
-	public String verCrudProveedor(Model model) {
+	@RequestMapping("/verCrudProveedor")
+	public String verCrudProveedor() {
 		return "intranetCrudProveedor";
 	}
 
-	@GetMapping("/verCrudServicio")
-	public String verCrudServicio(Model model) {
+	@RequestMapping("/verCrudServicio")
+	public String verCrudServicio() {
 		return "intranetCrudServicio";
 	}
 
-	@GetMapping("/verCrudUsuario")
-	public String verCrudUsuario(Model model) {
+	@RequestMapping("/verCrudUsuario")
+	public String verCrudUsuario() {
 		return "intranetCrudUsuario";
 	}
 
-	@GetMapping("/verAsignacionRol")
-	public String verAsignacionRol(Model model) {
+	@RequestMapping("/verAsignacionRol")
+	public String verAsignacionRol() {
 		return "intranetAsignacionRol";
 	}
 
-	@GetMapping("/verConsultaContrato")
-	public String verConsultaContrato(Model model) {
+	@RequestMapping("/verConsultaContrato")
+	public String verConsultaContrato() {
 		return "intranetConsultaContrato";
 	}
 
-	@GetMapping("/verConsultaServicio")
-	public String verConsultaServicio(Model model) {
+	@RequestMapping("/verConsultaServicio")
+	public String verConsultaServicio() {
 		return "intranetConsultaServicio";
 	}
 
