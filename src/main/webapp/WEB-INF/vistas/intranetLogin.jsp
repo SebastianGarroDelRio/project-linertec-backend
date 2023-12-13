@@ -25,7 +25,6 @@
 
 
     <title>Intranet</title>
-    <!--<%@ include file="../web/header2.jsp"%> -->
 </head>
 <body>
 <main>
