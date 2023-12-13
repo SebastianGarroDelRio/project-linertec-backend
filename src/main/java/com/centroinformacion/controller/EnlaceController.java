@@ -1,18 +1,17 @@
 package com.centroinformacion.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class EnlaceController {
 	
-	@RequestMapping("/verLogin")
+	@GetMapping("verLogin")
 	public String verLogin() {
 		return "intranetLogin";
 	}
 
-	@RequestMapping("/verIntranetHome")
+	@GetMapping("verIntranetHome")
 	public String verIntranetHome() {
 		return "intranetHome";
 	}
