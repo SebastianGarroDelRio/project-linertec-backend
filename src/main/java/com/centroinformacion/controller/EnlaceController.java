@@ -8,12 +8,12 @@ public class EnlaceController {
 	
 	@GetMapping("verLogin")
 	public String verLogin() {
-		return "intranetLogin";
+		return "intranetLogin.jsp";
 	}
 
 	@GetMapping("verIntranetHome")
 	public String verIntranetHome() {
-		return "intranetHome";
+		return "intranetHome.jsp";
 	}
 
 	@GetMapping("/verCrudCategoria")
