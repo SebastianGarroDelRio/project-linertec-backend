@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EnlaceController {
 	
-	@GetMapping("verLogin")
+	@GetMapping("/verLogin")
 	public String verLogin() {
-		return "intranetLogin.jsp";
+		return "intranetLogin";
 	}
 
-	@GetMapping("verIntranetHome")
+	@GetMapping("/verIntranetHome")
 	public String verIntranetHome() {
-		return "intranetHome.jsp";
+		return "intranetHome";
 	}
 
 	@GetMapping("/verCrudCategoria")
