@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(scanBasePackages = "com.centroinformacion.controller")
+@SpringBootApplication(scanBasePackages = "com.centroinformacion")
 public class ProjectLinertecBackendApplication extends SpringBootServletInitializer {
 	
 	@Override
