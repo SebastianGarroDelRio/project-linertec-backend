@@ -12,12 +12,12 @@ public class EnlaceController {
         return "intranetLogin";
     }
 	
-	@GetMapping("/verLogin")
+	@RequestMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
 	}
 
-	@GetMapping("/verIntranetHome")
+	@RequestMapping("/verIntranetHome")
 	public String verIntranetHome() {
 		return "intranetHome";
 	}
