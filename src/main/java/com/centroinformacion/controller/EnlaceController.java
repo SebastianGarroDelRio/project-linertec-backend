@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EnlaceController {
 	
-	@RequestMapping("/verLogin")
+	@GetMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
 	}
 
-	@RequestMapping("/verIntranetHome")
+	@GetMapping("/verIntranetHome")
 	public String verIntranetHome() {
 		return "intranetHome";
 	}
