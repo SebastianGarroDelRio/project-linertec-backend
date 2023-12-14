@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EnlaceController {
 	
-	@RequestMapping("/")
-    public String paginaInicio() {
-        return "intranetLogin";
-    }
-	
 	@RequestMapping("/verLogin")
 	public String verLogin() {
 		return "intranetLogin";
